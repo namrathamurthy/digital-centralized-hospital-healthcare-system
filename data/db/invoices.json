@@ -1,0 +1,132 @@
+[
+  {
+    "_id": "t20w04t44mq9bg849",
+    "createdAt": "2026-06-11T09:49:39.225Z",
+    "updatedAt": "2026-06-11T09:50:50.703Z",
+    "appointmentId": "84yuvorn0mq9bbonn",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "amount": 300,
+    "description": "Doctor Consultation Fee",
+    "status": "paid",
+    "paymentMethod": "Cash"
+  },
+  {
+    "_id": "ru5tasw80mq9kxhmd",
+    "createdAt": "2026-06-11T14:15:01.237Z",
+    "updatedAt": "2026-06-11T14:34:32.589Z",
+    "appointmentId": "9zcjvs34hmq9ia0vn",
+    "patientId": "walkin_67qx3",
+    "patientName": "naha",
+    "amount": 300,
+    "description": "Doctor Consultation Fee",
+    "status": "paid",
+    "paymentMethod": "Cash"
+  },
+  {
+    "_id": "l88e8b5owmq9kxr1l",
+    "createdAt": "2026-06-11T14:15:13.449Z",
+    "updatedAt": "2026-06-11T14:34:38.675Z",
+    "appointmentId": "r41f2hpobmq9kwabg",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "amount": 300,
+    "description": "Doctor Consultation Fee",
+    "status": "paid",
+    "paymentMethod": "Cash"
+  },
+  {
+    "_id": "g2fz73jtkmq9lewsi",
+    "createdAt": "2026-06-11T14:28:34.050Z",
+    "updatedAt": "2026-06-11T14:34:44.489Z",
+    "appointmentId": "oy5pyf070mq9l7mk0",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "amount": 300,
+    "description": "Doctor Consultation Fee",
+    "status": "paid",
+    "paymentMethod": "UPI"
+  },
+  {
+    "_id": "9o1674buzmq9lk1dz",
+    "createdAt": "2026-06-11T14:32:33.287Z",
+    "updatedAt": "2026-06-12T07:32:33.838Z",
+    "appointmentId": "2b6s7ewibmq9ld2js",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "amount": 300,
+    "description": "Doctor Consultation Fee",
+    "status": "paid",
+    "paymentMethod": "Card"
+  },
+  {
+    "_id": "c6mf8h3cemqaktes6",
+    "createdAt": "2026-06-12T06:59:37.110Z",
+    "updatedAt": "2026-06-12T07:32:27.024Z",
+    "appointmentId": "aw0nsejmnmqakse6o",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "amount": 580,
+    "description": "Doctor Consultation Fee + Medications (1 items) + Lab Scans: Chest X-Ray",
+    "status": "paid",
+    "paymentMethod": "UPI"
+  },
+  {
+    "_id": "wsd0nchibmqalouk2",
+    "createdAt": "2026-06-12T07:24:03.890Z",
+    "updatedAt": "2026-06-12T07:24:29.546Z",
+    "appointmentId": "lxh1sa4lsmqalngy6",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "amount": 580,
+    "description": "Doctor Consultation Fee + Medications (1 items) + Lab Scans: Complete Blood Count (CBC)",
+    "status": "paid",
+    "paymentMethod": "UPI"
+  },
+  {
+    "_id": "wbafat7t3mqam4nvi",
+    "createdAt": "2026-06-12T07:36:21.726Z",
+    "updatedAt": "2026-06-12T07:36:54.043Z",
+    "appointmentId": "ux7d3vk4jmqam2zpz",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "amount": 580,
+    "description": "Doctor Consultation Fee + Medications (1 items) + Lab Scans: ECG / Electrocardiogram",
+    "status": "paid",
+    "paymentMethod": "UPI"
+  },
+  {
+    "_id": "ppwmj6a0xmqc5tqwp",
+    "createdAt": "2026-06-13T09:35:30.937Z",
+    "updatedAt": "2026-06-13T09:35:30.937Z",
+    "appointmentId": "8fubrqjq4mqc0mfh9",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "amount": 580,
+    "description": "Doctor Consultation Fee + Medications (1 items) + Lab Scans: Complete Blood Count (CBC)",
+    "status": "pending"
+  },
+  {
+    "_id": "ydcv0h21wmqdj8ims",
+    "createdAt": "2026-06-14T08:38:41.236Z",
+    "updatedAt": "2026-06-14T08:38:41.236Z",
+    "appointmentId": "f4wvm96a5mqdivr4o",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "amount": 580,
+    "description": "Doctor Consultation Fee + Medications (1 items) + Lab Scans: Chest X-Ray",
+    "status": "pending"
+  },
+  {
+    "_id": "o3sx9jrhwmqggw577",
+    "createdAt": "2026-06-16T09:56:23.251Z",
+    "updatedAt": "2026-06-16T09:56:56.841Z",
+    "appointmentId": "fph5ba3pxmqggtppd",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "amount": 580,
+    "description": "Doctor Consultation Fee + Medications (1 items) + Lab Scans: Chest X-Ray",
+    "status": "paid",
+    "paymentMethod": "Card"
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "_id": "doctor_vpzc8ilaemq9arisb_2026-06-11",
+    "createdAt": "2026-06-11T09:46:07.376Z",
+    "updatedAt": "2026-06-11T14:33:58.455Z",
+    "seq": 8
+  },
+  {
+    "_id": "doctor_vpzc8ilaemq9arisb_2026-06-12",
+    "createdAt": "2026-06-12T06:58:49.678Z",
+    "updatedAt": "2026-06-12T07:35:03.766Z",
+    "seq": 3
+  },
+  {
+    "_id": "doctor_mockdoc3_2026-06-13",
+    "createdAt": "2026-06-13T07:09:51.450Z",
+    "updatedAt": "2026-06-13T12:50:30.003Z",
+    "seq": 2
+  },
+  {
+    "_id": "doctor_p6s9cmrbd_2026-06-13",
+    "createdAt": "2026-06-13T07:41:23.530Z",
+    "updatedAt": "2026-06-13T07:41:23.531Z",
+    "seq": 1
+  },
+  {
+    "_id": "doctor_mockdoc3_2026-06-14",
+    "createdAt": "2026-06-14T08:28:45.715Z",
+    "updatedAt": "2026-06-14T08:28:45.717Z",
+    "seq": 1
+  },
+  {
+    "_id": "doctor_mockdoc3_2026-06-16",
+    "createdAt": "2026-06-16T09:54:29.851Z",
+    "updatedAt": "2026-06-16T09:54:29.854Z",
+    "seq": 1
+  }
+]

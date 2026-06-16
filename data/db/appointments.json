@@ -1,0 +1,306 @@
+[
+  {
+    "_id": "84yuvorn0mq9bbonn",
+    "createdAt": "2026-06-11T09:46:07.379Z",
+    "updatedAt": "2026-06-11T09:49:39.225Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 1,
+    "date": "2026-06-11",
+    "timeSlot": "11:00 AM - 11:30 AM",
+    "triageData": {
+      "symptoms": "Chest pain, pressure, tightness, or discomfort (often described as a squeezing sensation)\nPain that spreads to the arm (especially the left arm), shoulder, neck, jaw, back, or upper stomach\nShortness of breath\nCold sweat\nNausea or vomiting\nDizziness, lightheadedness, or fainting\nUnusual fatigue or weakness\nA feeling of anxiety or impending doom",
+      "severity": "Emergency",
+      "aiAdvice": "CRITICAL WARNING: Possible cardiac episode. Go to the nearest Emergency Room immediately or dial emergency services. Do not drive yourself."
+    },
+    "status": "completed",
+    "priority": 0
+  },
+  {
+    "_id": "9zcjvs34hmq9ia0vn",
+    "createdAt": "2026-06-11T13:00:47.219Z",
+    "updatedAt": "2026-06-11T14:15:01.236Z",
+    "patientId": "walkin_67qx3",
+    "patientName": "naha",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 2,
+    "date": "2026-06-11",
+    "timeSlot": "Walk-in",
+    "triageData": {
+      "symptoms": "mild chest pain",
+      "severity": "High",
+      "aiAdvice": "Receptionist scheduled walk-in."
+    },
+    "status": "completed",
+    "priority": 1
+  },
+  {
+    "_id": "r41f2hpobmq9kwabg",
+    "createdAt": "2026-06-11T14:14:05.116Z",
+    "updatedAt": "2026-06-11T14:15:13.448Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 3,
+    "date": "2026-06-11",
+    "timeSlot": "09:00 AM - 09:30 AM",
+    "triageData": {
+      "symptoms": "i have mild chest pain",
+      "severity": "Emergency",
+      "aiAdvice": "CRITICAL WARNING: Possible cardiac episode. Go to the nearest Emergency Room immediately or dial emergency services. Do not drive yourself."
+    },
+    "status": "completed",
+    "priority": 0
+  },
+  {
+    "_id": "c4m2zopnhmq9l26qi",
+    "createdAt": "2026-06-11T14:18:40.410Z",
+    "updatedAt": "2026-06-11T14:24:28.281Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 4,
+    "date": "2026-06-11",
+    "timeSlot": "11:00 AM - 11:30 AM",
+    "triageData": {
+      "symptoms": "i have mild chest pain ",
+      "severity": "Emergency",
+      "aiAdvice": "CRITICAL WARNING: Possible cardiac episode. Go to the nearest Emergency Room immediately or dial emergency services. Do not drive yourself."
+    },
+    "status": "cancelled",
+    "priority": 0
+  },
+  {
+    "_id": "oy5pyf070mq9l7mk0",
+    "createdAt": "2026-06-11T14:22:54.192Z",
+    "updatedAt": "2026-06-11T14:28:34.049Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 5,
+    "date": "2026-06-11",
+    "timeSlot": "09:00 AM - 09:30 AM",
+    "triageData": {
+      "symptoms": "i have mild chest pain",
+      "severity": "Emergency",
+      "aiAdvice": "CRITICAL WARNING: Possible cardiac episode. Go to the nearest Emergency Room immediately or dial emergency services. Do not drive yourself."
+    },
+    "status": "completed",
+    "priority": 0
+  },
+  {
+    "_id": "2b6s7ewibmq9ld2js",
+    "createdAt": "2026-06-11T14:27:08.200Z",
+    "updatedAt": "2026-06-11T14:32:33.286Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 6,
+    "date": "2026-06-11",
+    "timeSlot": "11:00 AM - 11:30 AM",
+    "triageData": {
+      "symptoms": "i have mild chest pain",
+      "severity": "Emergency",
+      "aiAdvice": "CRITICAL WARNING: Possible cardiac episode. Go to the nearest Emergency Room immediately or dial emergency services. Do not drive yourself."
+    },
+    "status": "completed",
+    "priority": 0
+  },
+  {
+    "_id": "m1mfvps1cmq9lh3rn",
+    "createdAt": "2026-06-11T14:30:16.403Z",
+    "updatedAt": "2026-06-11T14:30:16.403Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 7,
+    "date": "2026-06-11",
+    "timeSlot": "02:00 PM - 02:30 PM",
+    "triageData": {
+      "symptoms": "i have mild chest pain",
+      "severity": "Emergency",
+      "aiAdvice": "CRITICAL WARNING: Possible cardiac episode. Go to the nearest Emergency Room immediately or dial emergency services. Do not drive yourself."
+    },
+    "status": "waiting",
+    "priority": 0
+  },
+  {
+    "_id": "fxp0umsawmq9llv3s",
+    "createdAt": "2026-06-11T14:33:58.456Z",
+    "updatedAt": "2026-06-11T14:33:58.456Z",
+    "patientId": "walkin_d9xxs",
+    "patientName": "namratha",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 8,
+    "date": "2026-06-11",
+    "timeSlot": "Walk-in",
+    "triageData": {
+      "symptoms": "mild chest pain",
+      "severity": "High",
+      "aiAdvice": "Receptionist scheduled walk-in."
+    },
+    "status": "waiting",
+    "priority": 1
+  },
+  {
+    "_id": "aw0nsejmnmqakse6o",
+    "createdAt": "2026-06-12T06:58:49.680Z",
+    "updatedAt": "2026-06-12T06:59:37.105Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 1,
+    "date": "2026-06-12",
+    "timeSlot": "09:00 AM - 09:30 AM",
+    "triageData": {
+      "symptoms": "i hve a mild chest pain",
+      "severity": "Emergency",
+      "aiAdvice": "CRITICAL WARNING: Possible cardiac episode. Go to the nearest Emergency Room immediately or dial emergency services. Do not drive yourself."
+    },
+    "status": "completed",
+    "priority": 0
+  },
+  {
+    "_id": "lxh1sa4lsmqalngy6",
+    "createdAt": "2026-06-12T07:22:59.598Z",
+    "updatedAt": "2026-06-12T07:24:03.886Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 2,
+    "date": "2026-06-12",
+    "timeSlot": "09:00 AM - 09:30 AM",
+    "triageData": {
+      "symptoms": "i have skin allergy\n",
+      "severity": "Low",
+      "aiAdvice": "Symptoms appear mild. Please rest, drink plenty of water, and schedule a routine checkup with a General Physician if symptoms persist."
+    },
+    "status": "completed",
+    "priority": 0
+  },
+  {
+    "_id": "ux7d3vk4jmqam2zpz",
+    "createdAt": "2026-06-12T07:35:03.767Z",
+    "updatedAt": "2026-06-12T07:36:21.723Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 3,
+    "date": "2026-06-12",
+    "timeSlot": "11:00 AM - 11:30 AM",
+    "triageData": {
+      "symptoms": "i have facing abnormality in breathing",
+      "severity": "Emergency",
+      "aiAdvice": "CRITICAL WARNING: Severe respiratory distress. Seek immediate emergency medical attention. Sit upright and use any prescribed inhaler while waiting."
+    },
+    "status": "completed",
+    "priority": 0
+  },
+  {
+    "_id": "8fubrqjq4mqc0mfh9",
+    "createdAt": "2026-06-13T07:09:51.453Z",
+    "updatedAt": "2026-06-13T09:35:30.933Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "mockdoc3",
+    "doctorName": "Dr. Ramana Rao",
+    "tokenNumber": 1,
+    "date": "2026-06-13",
+    "timeSlot": "10:00 AM - 10:30 AM",
+    "triageData": {
+      "symptoms": "i have mild chest pain\n",
+      "severity": "Emergency",
+      "aiAdvice": "CRITICAL WARNING: Possible cardiac episode. Go to the nearest Emergency Room immediately or dial emergency services. Do not drive yourself."
+    },
+    "status": "completed",
+    "priority": 0
+  },
+  {
+    "_id": "ovdevtrigmqc1qzf0",
+    "createdAt": "2026-06-13T07:41:23.532Z",
+    "updatedAt": "2026-06-13T07:41:23.532Z",
+    "patientId": "walkin_o19i0",
+    "patientName": "naha",
+    "doctorId": "p6s9cmrbd",
+    "doctorName": "Dr. Pooja Sharma",
+    "tokenNumber": 1,
+    "date": "2026-06-13",
+    "timeSlot": "Walk-in",
+    "triageData": {
+      "symptoms": "chest pain",
+      "severity": "High",
+      "aiAdvice": "Receptionist scheduled walk-in."
+    },
+    "status": "waiting",
+    "priority": 1
+  },
+  {
+    "_id": "c7tj5ivi4mqccshyt",
+    "createdAt": "2026-06-13T12:50:30.005Z",
+    "updatedAt": "2026-06-13T12:50:53.565Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "mockdoc3",
+    "doctorName": "Dr. Ramana Rao",
+    "tokenNumber": 2,
+    "date": "2026-06-13",
+    "timeSlot": "11:00 AM - 11:30 AM",
+    "triageData": {
+      "symptoms": "chest pain",
+      "severity": "Emergency",
+      "aiAdvice": "CRITICAL WARNING: Possible cardiac episode. Go to the nearest Emergency Room immediately or dial emergency services. Do not drive yourself."
+    },
+    "status": "calling",
+    "priority": 0
+  },
+  {
+    "_id": "f4wvm96a5mqdivr4o",
+    "createdAt": "2026-06-14T08:28:45.720Z",
+    "updatedAt": "2026-06-14T08:38:41.214Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "mockdoc3",
+    "doctorName": "Dr. Ramana Rao",
+    "tokenNumber": 1,
+    "date": "2026-06-14",
+    "timeSlot": "09:00 AM - 09:30 AM",
+    "triageData": {
+      "symptoms": "chest pain\n",
+      "severity": "Emergency",
+      "aiAdvice": "CRITICAL WARNING: Possible cardiac episode. Go to the nearest Emergency Room immediately or dial emergency services. Do not drive yourself."
+    },
+    "status": "completed",
+    "priority": 0
+  },
+  {
+    "_id": "fph5ba3pxmqggtppd",
+    "createdAt": "2026-06-16T09:54:29.857Z",
+    "updatedAt": "2026-06-16T09:56:23.212Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "mockdoc3",
+    "doctorName": "Dr. Ramana Rao",
+    "tokenNumber": 1,
+    "date": "2026-06-16",
+    "timeSlot": "11:00 AM - 11:30 AM",
+    "triageData": {
+      "symptoms": "i have mild chest pain",
+      "severity": "Emergency",
+      "aiAdvice": "CRITICAL WARNING: Possible cardiac episode. Go to the nearest Emergency Room immediately or dial emergency services. Do not drive yourself."
+    },
+    "status": "completed",
+    "priority": 0
+  }
+]
