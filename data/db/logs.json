@@ -1788,5 +1788,375 @@
     "userId": "j2hj678n3mq9arisj",
     "userRole": "pharmacy",
     "timestamp": "2026-06-16T09:57:27.507Z"
+  },
+  {
+    "_id": "16ta66s3pmqhl7qln",
+    "createdAt": "2026-06-17T04:45:08.843Z",
+    "updatedAt": "2026-06-17T04:45:08.843Z",
+    "action": "User Logged In",
+    "details": "Logged in user: John Doe (Patient) (patient)",
+    "userId": "sinb68cramq9aris4",
+    "userRole": "patient",
+    "timestamp": "2026-06-17T04:45:08.840Z"
+  },
+  {
+    "_id": "g3mce2pfqmqhl8qn8",
+    "createdAt": "2026-06-17T04:45:55.556Z",
+    "updatedAt": "2026-06-17T04:45:55.556Z",
+    "action": "Appointment Booked",
+    "details": "Appointment booked for John Doe (Patient) with Dr. Dr. Ramana Rao. Token #1",
+    "userId": "sinb68cramq9aris4",
+    "userRole": "patient",
+    "timestamp": "2026-06-17T04:45:55.553Z"
+  },
+  {
+    "_id": "c24nsad3xmqhl9w1g",
+    "createdAt": "2026-06-17T04:46:49.204Z",
+    "updatedAt": "2026-06-17T04:46:49.204Z",
+    "action": "User Logged In",
+    "details": "Logged in user: Dr. Robert Chen (doctor)",
+    "userId": "y2xh2eap5mq9aris8",
+    "userRole": "doctor",
+    "timestamp": "2026-06-17T04:46:49.202Z"
+  },
+  {
+    "_id": "sogchbvxamqhlaf21",
+    "createdAt": "2026-06-17T04:47:13.849Z",
+    "updatedAt": "2026-06-17T04:47:13.849Z",
+    "action": "User Logged In",
+    "details": "Logged in user: Dr. Ramana Rao (doctor)",
+    "userId": "mockuser3",
+    "userRole": "doctor",
+    "timestamp": "2026-06-17T04:47:13.847Z"
+  },
+  {
+    "_id": "lt5m9hrnsmqhlaudi",
+    "createdAt": "2026-06-17T04:47:33.702Z",
+    "updatedAt": "2026-06-17T04:47:33.702Z",
+    "action": "Queue Next Called",
+    "details": "Called token #1 (John Doe (Patient)) to room undefined",
+    "userId": "mockuser3",
+    "userRole": "doctor",
+    "timestamp": "2026-06-17T04:47:33.700Z"
+  },
+  {
+    "_id": "p0dhg8crwmqhlcqhb",
+    "createdAt": "2026-06-17T04:49:01.967Z",
+    "updatedAt": "2026-06-17T04:49:01.967Z",
+    "action": "Consultation Completed",
+    "details": "Dr. Dr. Ramana Rao completed consultation for patient: John Doe (Patient) | Diagnosis: ntg to worry it's a just mild chest pain | Invoice: ₹580",
+    "userId": "mockuser3",
+    "userRole": "doctor",
+    "timestamp": "2026-06-17T04:49:01.963Z"
+  },
+  {
+    "_id": "vh4m8fhhgmqhlcqhh",
+    "createdAt": "2026-06-17T04:49:01.973Z",
+    "updatedAt": "2026-06-17T04:49:01.973Z",
+    "action": "Prescription Sent to Pharmacy",
+    "details": "Dr. Dr. Ramana Rao prescribed 1 medication(s) to John Doe (Patient): aspirin",
+    "userId": "mockuser3",
+    "userRole": "doctor",
+    "timestamp": "2026-06-17T04:49:01.970Z"
+  },
+  {
+    "_id": "jruvipcqkmqhlcqhn",
+    "createdAt": "2026-06-17T04:49:01.979Z",
+    "updatedAt": "2026-06-17T04:49:01.979Z",
+    "action": "Lab Test Ordered",
+    "details": "Dr. Dr. Ramana Rao ordered Chest X-Ray for patient John Doe (Patient)",
+    "userId": "mockuser3",
+    "userRole": "doctor",
+    "timestamp": "2026-06-17T04:49:01.977Z"
+  },
+  {
+    "_id": "7tx0d4t1nmqhlcqhu",
+    "createdAt": "2026-06-17T04:49:01.986Z",
+    "updatedAt": "2026-06-17T04:49:01.986Z",
+    "action": "Invoice Generated",
+    "details": "Dr. Dr. Ramana Rao generated invoice of ₹580 for John Doe (Patient) (Doctor Consultation Fee + Medications (1 items) + Lab Scans: Chest X-Ray)",
+    "userId": "mockuser3",
+    "userRole": "doctor",
+    "timestamp": "2026-06-17T04:49:01.985Z"
+  },
+  {
+    "_id": "bfrsok1slmqhld5ya",
+    "createdAt": "2026-06-17T04:49:22.018Z",
+    "updatedAt": "2026-06-17T04:49:22.018Z",
+    "action": "User Logged In",
+    "details": "Logged in user: Sarah Miller (Reception) (receptionist)",
+    "userId": "1tizeo64kmq9arisd",
+    "userRole": "receptionist",
+    "timestamp": "2026-06-17T04:49:22.016Z"
+  },
+  {
+    "_id": "t7e2l1y54mqhldl0j",
+    "createdAt": "2026-06-17T04:49:41.539Z",
+    "updatedAt": "2026-06-17T04:49:41.539Z",
+    "action": "User Logged In",
+    "details": "Logged in user: David Jones (Billing) (billing)",
+    "userId": "9h8wqw9eamq9arisf",
+    "userRole": "billing",
+    "timestamp": "2026-06-17T04:49:41.538Z"
+  },
+  {
+    "_id": "61zn1di0emqhle2mn",
+    "createdAt": "2026-06-17T04:50:04.367Z",
+    "updatedAt": "2026-06-17T04:50:04.367Z",
+    "action": "Invoice Payment Recorded",
+    "details": "Billing Staff David Jones (Billing) settled invoice ₹580 for patient John Doe (Patient) via Cash | Invoice ID: w69f3c0v9mqhlcqfx",
+    "userId": "9h8wqw9eamq9arisf",
+    "userRole": "billing",
+    "timestamp": "2026-06-17T04:50:04.364Z"
+  },
+  {
+    "_id": "pmhk1aooumqj91zsd",
+    "createdAt": "2026-06-18T08:40:17.773Z",
+    "updatedAt": "2026-06-18T08:40:17.773Z",
+    "action": "User Logged In",
+    "details": "Logged in user: Dr. Ramana Rao (doctor)",
+    "userId": "mockuser3",
+    "userRole": "doctor",
+    "timestamp": "2026-06-18T08:40:17.771Z"
+  },
+  {
+    "_id": "vvdry5a66mqjbiygc",
+    "createdAt": "2026-06-18T09:49:28.428Z",
+    "updatedAt": "2026-06-18T09:49:28.428Z",
+    "action": "User Logged In",
+    "details": "Logged in user: John Doe (Patient) (patient)",
+    "userId": "sinb68cramq9aris4",
+    "userRole": "patient",
+    "timestamp": "2026-06-18T09:49:28.428Z"
+  },
+  {
+    "_id": "2kgb9tglhmqjbjfj4",
+    "createdAt": "2026-06-18T09:49:50.560Z",
+    "updatedAt": "2026-06-18T09:49:50.560Z",
+    "action": "Appointment Booked",
+    "details": "Appointment booked for John Doe (Patient) with Dr. Dr. Robert Chen. Token #1",
+    "userId": "sinb68cramq9aris4",
+    "userRole": "patient",
+    "timestamp": "2026-06-18T09:49:50.559Z"
+  },
+  {
+    "_id": "c7xddcl09mqjbjnbc",
+    "createdAt": "2026-06-18T09:50:00.648Z",
+    "updatedAt": "2026-06-18T09:50:00.648Z",
+    "action": "User Logged In",
+    "details": "Logged in user: Dr. Robert Chen (doctor)",
+    "userId": "y2xh2eap5mq9aris8",
+    "userRole": "doctor",
+    "timestamp": "2026-06-18T09:50:00.647Z"
+  },
+  {
+    "_id": "lf3vx88v1mqjbjtb8",
+    "createdAt": "2026-06-18T09:50:08.420Z",
+    "updatedAt": "2026-06-18T09:50:08.420Z",
+    "action": "Queue Next Called",
+    "details": "Called token #1 (John Doe (Patient)) to room undefined",
+    "userId": "y2xh2eap5mq9aris8",
+    "userRole": "doctor",
+    "timestamp": "2026-06-18T09:50:08.418Z"
+  },
+  {
+    "_id": "voat09g24mqjbkpup",
+    "createdAt": "2026-06-18T09:50:50.593Z",
+    "updatedAt": "2026-06-18T09:50:50.593Z",
+    "action": "Consultation Completed",
+    "details": "Dr. Dr. Robert Chen completed consultation for patient: John Doe (Patient) | Diagnosis: normal | Invoice: ₹860",
+    "userId": "y2xh2eap5mq9aris8",
+    "userRole": "doctor",
+    "timestamp": "2026-06-18T09:50:50.592Z"
+  },
+  {
+    "_id": "90if4sfyvmqjbkpus",
+    "createdAt": "2026-06-18T09:50:50.596Z",
+    "updatedAt": "2026-06-18T09:50:50.596Z",
+    "action": "Prescription Sent to Pharmacy",
+    "details": "Dr. Dr. Robert Chen prescribed 1 medication(s) to John Doe (Patient): dolo 650",
+    "userId": "y2xh2eap5mq9aris8",
+    "userRole": "doctor",
+    "timestamp": "2026-06-18T09:50:50.595Z"
+  },
+  {
+    "_id": "bjfd146ezmqjbkpuu",
+    "createdAt": "2026-06-18T09:50:50.598Z",
+    "updatedAt": "2026-06-18T09:50:50.598Z",
+    "action": "Invoice Generated",
+    "details": "Dr. Dr. Robert Chen generated invoice of ₹860 for John Doe (Patient) (Consultation (Emergency): ₹800 + Medications: dolo 650 (₹60))",
+    "userId": "y2xh2eap5mq9aris8",
+    "userRole": "doctor",
+    "timestamp": "2026-06-18T09:50:50.597Z"
+  },
+  {
+    "_id": "ifv83uylzmqjbkxrd",
+    "createdAt": "2026-06-18T09:51:00.841Z",
+    "updatedAt": "2026-06-18T09:51:00.841Z",
+    "action": "User Logged In",
+    "details": "Logged in user: David Jones (Billing) (billing)",
+    "userId": "9h8wqw9eamq9arisf",
+    "userRole": "billing",
+    "timestamp": "2026-06-18T09:51:00.839Z"
+  },
+  {
+    "_id": "2jzz1384smqjblil2",
+    "createdAt": "2026-06-18T09:51:27.830Z",
+    "updatedAt": "2026-06-18T09:51:27.830Z",
+    "action": "Invoice Payment Recorded",
+    "details": "Billing Staff David Jones (Billing) settled invoice ₹860 for patient John Doe (Patient) via UPI | Invoice ID: axy35alkzmqjbkpuc",
+    "userId": "9h8wqw9eamq9arisf",
+    "userRole": "billing",
+    "timestamp": "2026-06-18T09:51:27.828Z"
+  },
+  {
+    "_id": "v0822r8atmqjbmd3f",
+    "createdAt": "2026-06-18T09:52:07.371Z",
+    "updatedAt": "2026-06-18T09:52:07.371Z",
+    "action": "User Logged In",
+    "details": "Logged in user: Emily Watson (Lab) (lab)",
+    "userId": "c4mmga2wsmq9arish",
+    "userRole": "lab",
+    "timestamp": "2026-06-18T09:52:07.370Z"
+  },
+  {
+    "_id": "jadnulpp1mqjbmskr",
+    "createdAt": "2026-06-18T09:52:27.435Z",
+    "updatedAt": "2026-06-18T09:52:27.435Z",
+    "action": "User Logged In",
+    "details": "Logged in user: Frank Harris (Pharmacy) (pharmacy)",
+    "userId": "j2hj678n3mq9arisj",
+    "userRole": "pharmacy",
+    "timestamp": "2026-06-18T09:52:27.433Z"
+  },
+  {
+    "_id": "iwso3r9xpmqjbn0di",
+    "createdAt": "2026-06-18T09:52:37.542Z",
+    "updatedAt": "2026-06-18T09:52:37.542Z",
+    "action": "Medicines Packaged",
+    "details": "Pharmacist dispensed medications to patient John Doe (Patient) for prescription: bfhwmensqmqjbkptr",
+    "userId": "j2hj678n3mq9arisj",
+    "userRole": "pharmacy",
+    "timestamp": "2026-06-18T09:52:37.535Z"
+  },
+  {
+    "_id": "jhigq4ob1mqjbn25d",
+    "createdAt": "2026-06-18T09:52:39.841Z",
+    "updatedAt": "2026-06-18T09:52:39.841Z",
+    "action": "Medicines Packaged",
+    "details": "Pharmacist dispensed medications to patient John Doe (Patient) for prescription: 5odpxpo42mqhlcqdi",
+    "userId": "j2hj678n3mq9arisj",
+    "userRole": "pharmacy",
+    "timestamp": "2026-06-18T09:52:39.839Z"
+  },
+  {
+    "_id": "33emwifb0mqjcpchl",
+    "createdAt": "2026-06-18T10:22:26.169Z",
+    "updatedAt": "2026-06-18T10:22:26.169Z",
+    "action": "User Logged In",
+    "details": "Logged in user: John Doe (Patient) (patient)",
+    "userId": "sinb68cramq9aris4",
+    "userRole": "patient",
+    "timestamp": "2026-06-18T10:22:26.167Z"
+  },
+  {
+    "_id": "2of9sxs12mqjcpmsi",
+    "createdAt": "2026-06-18T10:22:39.522Z",
+    "updatedAt": "2026-06-18T10:22:39.522Z",
+    "action": "Appointment Booked",
+    "details": "Appointment booked for John Doe (Patient) with Dr. Dr. Robert Chen. Token #2",
+    "userId": "sinb68cramq9aris4",
+    "userRole": "patient",
+    "timestamp": "2026-06-18T10:22:39.521Z"
+  },
+  {
+    "_id": "apj1r5oxrmqjcpuac",
+    "createdAt": "2026-06-18T10:22:49.236Z",
+    "updatedAt": "2026-06-18T10:22:49.236Z",
+    "action": "User Logged In",
+    "details": "Logged in user: Dr. Robert Chen (doctor)",
+    "userId": "y2xh2eap5mq9aris8",
+    "userRole": "doctor",
+    "timestamp": "2026-06-18T10:22:49.234Z"
+  },
+  {
+    "_id": "ktuu8u7o7mqjcpvoe",
+    "createdAt": "2026-06-18T10:22:51.038Z",
+    "updatedAt": "2026-06-18T10:22:51.038Z",
+    "action": "Queue Next Called",
+    "details": "Called token #2 (John Doe (Patient)) to room undefined",
+    "userId": "y2xh2eap5mq9aris8",
+    "userRole": "doctor",
+    "timestamp": "2026-06-18T10:22:51.037Z"
+  },
+  {
+    "_id": "w35p9o33bmqjct26u",
+    "createdAt": "2026-06-18T10:25:19.446Z",
+    "updatedAt": "2026-06-18T10:25:19.446Z",
+    "action": "Consultation Completed",
+    "details": "Dr. Dr. Robert Chen completed consultation for patient: John Doe (Patient) | Diagnosis: normal | Invoice: ₹900",
+    "userId": "y2xh2eap5mq9aris8",
+    "userRole": "doctor",
+    "timestamp": "2026-06-18T10:25:19.445Z"
+  },
+  {
+    "_id": "2x3ph4wvbmqjct26w",
+    "createdAt": "2026-06-18T10:25:19.448Z",
+    "updatedAt": "2026-06-18T10:25:19.448Z",
+    "action": "Prescription Sent to Pharmacy",
+    "details": "Dr. Dr. Robert Chen prescribed 1 medication(s) to John Doe (Patient): dolo-650",
+    "userId": "y2xh2eap5mq9aris8",
+    "userRole": "doctor",
+    "timestamp": "2026-06-18T10:25:19.447Z"
+  },
+  {
+    "_id": "7msktum1fmqjct26x",
+    "createdAt": "2026-06-18T10:25:19.449Z",
+    "updatedAt": "2026-06-18T10:25:19.449Z",
+    "action": "Invoice Generated",
+    "details": "Dr. Dr. Robert Chen generated invoice of ₹900 for John Doe (Patient) (Consultation (Emergency): ₹800 + Medications: dolo-650 (₹100))",
+    "userId": "y2xh2eap5mq9aris8",
+    "userRole": "doctor",
+    "timestamp": "2026-06-18T10:25:19.449Z"
+  },
+  {
+    "_id": "kjkrh297umqjddrx7",
+    "createdAt": "2026-06-18T10:41:25.915Z",
+    "updatedAt": "2026-06-18T10:41:25.915Z",
+    "action": "User Logged In",
+    "details": "Logged in user: John Doe (Patient) (patient)",
+    "userId": "sinb68cramq9aris4",
+    "userRole": "patient",
+    "timestamp": "2026-06-18T10:41:25.913Z"
+  },
+  {
+    "_id": "m0fj3ywyjmqjdjws8",
+    "createdAt": "2026-06-18T10:46:12.152Z",
+    "updatedAt": "2026-06-18T10:46:12.152Z",
+    "action": "User Logged In",
+    "details": "Logged in user: John Doe (Patient) (patient)",
+    "userId": "sinb68cramq9aris4",
+    "userRole": "patient",
+    "timestamp": "2026-06-18T10:46:12.150Z"
+  },
+  {
+    "_id": "sdlzwzkp7mqjdsp62",
+    "createdAt": "2026-06-18T10:53:02.186Z",
+    "updatedAt": "2026-06-18T10:53:02.186Z",
+    "action": "User Logged In",
+    "details": "Logged in user: John Doe (Patient) (patient)",
+    "userId": "sinb68cramq9aris4",
+    "userRole": "patient",
+    "timestamp": "2026-06-18T10:53:02.185Z"
+  },
+  {
+    "_id": "onrc8d321mqjdsutl",
+    "createdAt": "2026-06-18T10:53:09.513Z",
+    "updatedAt": "2026-06-18T10:53:09.513Z",
+    "action": "User Logged In",
+    "details": "Logged in user: Dr. Robert Chen (doctor)",
+    "userId": "y2xh2eap5mq9aris8",
+    "userRole": "doctor",
+    "timestamp": "2026-06-18T10:53:09.510Z"
   }
 ]

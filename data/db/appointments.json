@@ -302,5 +302,62 @@
     },
     "status": "completed",
     "priority": 0
+  },
+  {
+    "_id": "jl2kdklh3mqhl8qn3",
+    "createdAt": "2026-06-17T04:45:55.551Z",
+    "updatedAt": "2026-06-17T04:49:01.763Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "mockdoc3",
+    "doctorName": "Dr. Ramana Rao",
+    "tokenNumber": 1,
+    "date": "2026-06-17",
+    "timeSlot": "11:00 AM - 11:30 AM",
+    "triageData": {
+      "symptoms": " I have  mild chest pain",
+      "severity": "Emergency",
+      "aiAdvice": "CRITICAL WARNING: Possible cardiac episode. Go to the nearest Emergency Room immediately or dial emergency services. Do not drive yourself."
+    },
+    "status": "completed",
+    "priority": 0
+  },
+  {
+    "_id": "tga8476demqjbjfj2",
+    "createdAt": "2026-06-18T09:49:50.558Z",
+    "updatedAt": "2026-06-18T09:50:50.525Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 1,
+    "date": "2026-06-18",
+    "timeSlot": "09:00 AM - 09:30 AM",
+    "triageData": {
+      "symptoms": "fever",
+      "severity": "Low",
+      "aiAdvice": "Standard flu-like symptoms. Take paracetamol as needed, rest, stay hydrated. Visit general practitioner if fever exceeds 102°F."
+    },
+    "status": "completed",
+    "priority": 0
+  },
+  {
+    "_id": "atmyodxhbmqjcpmsg",
+    "createdAt": "2026-06-18T10:22:39.520Z",
+    "updatedAt": "2026-06-18T10:25:19.399Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 2,
+    "date": "2026-06-18",
+    "timeSlot": "09:00 AM - 09:30 AM",
+    "triageData": {
+      "symptoms": "fever and cold",
+      "severity": "Low",
+      "aiAdvice": "Standard flu-like symptoms. Take paracetamol as needed, rest, stay hydrated. Visit general practitioner if fever exceeds 102°F."
+    },
+    "status": "completed",
+    "priority": 0
   }
 ]

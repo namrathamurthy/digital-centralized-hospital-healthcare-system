@@ -8,6 +8,7 @@ const Invoice = require('../../../../models/Invoice');
 const { verifySession } = require('../../../../server-utils/auth');
 const { broadcastEvent } = require('../../../../server-utils/socket');
 const { writeLog } = require('../../../../server-utils/logger');
+const { DEPARTMENT_FEES, LAB_TEST_PRICES, getMedicinePrice } = require('../../../../server-utils/pricing');
 
 export async function POST(req) {
   await connectDB();
@@ -36,8 +37,9 @@ export async function POST(req) {
     // Mark appointment completed
     await Appointment.findByIdAndUpdate(appointmentId, { status: 'completed' });
 
-    let finalInvoiceAmount = 300; // Standard Consultation Fee
-    let descriptionParts = ['Doctor Consultation Fee'];
+    let consultationFee = DEPARTMENT_FEES[doctor.department] || 300;
+    let finalInvoiceAmount = consultationFee;
+    let descriptionParts = [`Consultation (${doctor.department}): ₹${consultationFee}`];
 
     // Save prescription if medications are prescribed or a file is uploaded
     if ((medications && medications.length > 0) || prescriptionFile) {
@@ -55,8 +57,20 @@ export async function POST(req) {
         attachmentMimeType: prescriptionFile?.mimeType,
         attachmentName: prescriptionFile?.name
       });
-      finalInvoiceAmount += finalMeds.length * 80; // Mock price per medicine
-      descriptionParts.push(`Medications (${finalMeds.length} items)`);
+      let totalMedFee = 0;
+      let medDetails = [];
+      for (const med of finalMeds) {
+        if (med.name === 'See Attached Photocopy') {
+           totalMedFee += 100;
+           medDetails.push(`Attached Rx (₹100)`);
+        } else {
+           const price = getMedicinePrice(med.name);
+           totalMedFee += price;
+           medDetails.push(`${med.name} (₹${price})`);
+        }
+      }
+      finalInvoiceAmount += totalMedFee;
+      descriptionParts.push(`Medications: ${medDetails.join(', ')}`);
     }
 
     // Save lab requests if tests are ordered or file is uploaded
@@ -79,8 +93,9 @@ export async function POST(req) {
           requestAttachmentMimeType: labTestFile?.mimeType,
           requestAttachmentName: labTestFile?.name
         });
-        finalInvoiceAmount += 200; // Mock price per test
-        descriptionParts.push(`Lab Scans: ${testType}`);
+        const testPrice = LAB_TEST_PRICES[testType] || 200;
+        finalInvoiceAmount += testPrice;
+        descriptionParts.push(`Lab Scan: ${testType} (₹${testPrice})`);
       }
     }
 

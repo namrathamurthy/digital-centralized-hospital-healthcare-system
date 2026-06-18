@@ -128,5 +128,40 @@
     "description": "Doctor Consultation Fee + Medications (1 items) + Lab Scans: Chest X-Ray",
     "status": "paid",
     "paymentMethod": "Card"
+  },
+  {
+    "_id": "w69f3c0v9mqhlcqfx",
+    "createdAt": "2026-06-17T04:49:01.917Z",
+    "updatedAt": "2026-06-17T04:50:04.362Z",
+    "appointmentId": "jl2kdklh3mqhl8qn3",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "amount": 580,
+    "description": "Doctor Consultation Fee + Medications (1 items) + Lab Scans: Chest X-Ray",
+    "status": "paid",
+    "paymentMethod": "Cash"
+  },
+  {
+    "_id": "axy35alkzmqjbkpuc",
+    "createdAt": "2026-06-18T09:50:50.580Z",
+    "updatedAt": "2026-06-18T09:51:27.827Z",
+    "appointmentId": "tga8476demqjbjfj2",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "amount": 860,
+    "description": "Consultation (Emergency): ₹800 + Medications: dolo 650 (₹60)",
+    "status": "paid",
+    "paymentMethod": "UPI"
+  },
+  {
+    "_id": "s7pr94ct6mqjct26l",
+    "createdAt": "2026-06-18T10:25:19.437Z",
+    "updatedAt": "2026-06-18T10:25:19.437Z",
+    "appointmentId": "atmyodxhbmqjcpmsg",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "amount": 900,
+    "description": "Consultation (Emergency): ₹800 + Medications: dolo-650 (₹100)",
+    "status": "pending"
   }
 ]

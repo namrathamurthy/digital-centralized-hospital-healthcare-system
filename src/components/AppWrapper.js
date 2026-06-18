@@ -117,43 +117,43 @@ export default function AppWrapper({ children }) {
   };
 
   return (
-    <div className="min-h-screen bg-[#07090e] text-zinc-100 relative">
+    <div className="min-h-screen bg-slate-50 text-slate-800 relative">
       {/* SOS Alert Global Screen Overlay */}
       {activeSOS && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md animate-pulse duration-1000">
-          <div className="w-full max-w-lg border-2 border-red-500 bg-red-950/40 p-8 rounded-2xl shadow-[0_0_50px_rgba(239,68,68,0.4)] backdrop-blur-lg text-center relative overflow-hidden">
+          <div className="w-full max-w-lg border-2 border-red-500 bg-white/90 p-8 rounded-2xl shadow-[0_0_50px_rgba(239,68,68,0.4)] backdrop-blur-lg text-center relative overflow-hidden">
             {/* Background Red Flashing Aura */}
             <div className="absolute inset-0 bg-red-600/10 animate-ping duration-1500 pointer-events-none"></div>
 
-            <div className="flex justify-center mb-4 text-red-500 animate-bounce">
+            <div className="flex justify-center mb-4 text-red-600 animate-bounce">
               <AlertOctagon size={64} />
             </div>
 
-            <h2 className="text-3xl font-extrabold uppercase tracking-wide text-red-400 mb-2">
+            <h2 className="text-3xl font-extrabold uppercase tracking-wide text-red-600 mb-2">
               Critical Emergency Alert
             </h2>
 
-            <div className="bg-black/40 rounded-xl p-4 mb-6 border border-red-500/30 text-left">
-              <p className="text-zinc-400 text-xs uppercase tracking-wider font-semibold mb-1">Patient Name</p>
-              <p className="text-lg font-bold text-white mb-3">{activeSOS.patientName}</p>
+            <div className="bg-red-50 rounded-xl p-4 mb-6 border border-red-200 text-left relative z-10">
+              <p className="text-slate-500 text-xs uppercase tracking-wider font-semibold mb-1">Patient Name</p>
+              <p className="text-lg font-bold text-slate-800 mb-3">{activeSOS.patientName}</p>
 
-              <p className="text-zinc-400 text-xs uppercase tracking-wider font-semibold mb-1">Ward / Location</p>
-              <p className="text-white font-medium mb-3">{activeSOS.location}</p>
+              <p className="text-slate-500 text-xs uppercase tracking-wider font-semibold mb-1">Ward / Location</p>
+              <p className="text-slate-800 font-medium mb-3">{activeSOS.location}</p>
 
-              <p className="text-zinc-400 text-xs uppercase tracking-wider font-semibold mb-1">Reported Symptoms</p>
-              <p className="text-red-200 text-sm font-semibold">{activeSOS.symptoms}</p>
+              <p className="text-slate-500 text-xs uppercase tracking-wider font-semibold mb-1">Reported Symptoms</p>
+              <p className="text-red-600 text-sm font-semibold">{activeSOS.symptoms}</p>
             </div>
 
             {user && user.role !== 'patient' ? (
               <button
                 onClick={dismissSOS}
-                className="w-full flex items-center justify-center gap-2 py-3 bg-red-600 hover:bg-red-500 active:scale-[0.98] transition-all text-white font-bold rounded-lg cursor-pointer"
+                className="w-full flex items-center justify-center gap-2 py-3 bg-red-600 hover:bg-red-500 active:scale-[0.98] transition-all text-white font-bold rounded-lg cursor-pointer relative z-10"
               >
                 <X size={18} />
                 Acknowledge & Dismiss Alert
               </button>
             ) : (
-              <p className="text-red-400/80 text-xs animate-pulse font-medium">
+              <p className="text-red-500 text-xs animate-pulse font-medium relative z-10">
                 Emergency response unit has been notified automatically.
               </p>
             )}

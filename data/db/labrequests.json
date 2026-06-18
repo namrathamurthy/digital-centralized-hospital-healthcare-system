@@ -82,5 +82,17 @@
     "doctorName": "Dr. Ramana Rao",
     "testType": "Chest X-Ray",
     "status": "pending"
+  },
+  {
+    "_id": "wn5x3crswmqhlcqfr",
+    "createdAt": "2026-06-17T04:49:01.911Z",
+    "updatedAt": "2026-06-17T04:49:01.911Z",
+    "appointmentId": "jl2kdklh3mqhl8qn3",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "mockdoc3",
+    "doctorName": "Dr. Ramana Rao",
+    "testType": "Chest X-Ray",
+    "status": "pending"
   }
 ]
