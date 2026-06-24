@@ -4,18 +4,21 @@ import ProtectedRoute from '../../components/ProtectedRoute';
 import { useAuth } from '../../context/AuthContext';
 import { useSocket } from '../../context/SocketContext';
 import axios from 'axios';
-import { 
-  Heart, Activity, Brain, Clock, ShieldAlert, FileText, 
-  DollarSign, Receipt, CreditCard, Sparkles, CheckCircle, HelpCircle, ClipboardList, RefreshCw, QrCode, Banknote 
-} from 'lucide-react';
+import { FileText, DollarSign, Brain, HeartPulse, Clock, Search, ClipboardList, Activity, ActivitySquare, ShieldAlert, BadgeInfo, Sparkles, AlertTriangle, Thermometer, Droplets, TestTube, ArrowRight, Play, CheckCircle, CheckCircle2, Star, RefreshCw, Banknote, CreditCard, QrCode } from 'lucide-react';
+import AIChatbot from '../components/AIChatbot';
+import WearableTrendChart from '../../components/WearableTrendChart';
+import FeedbackForm from '../../components/FeedbackForm';
 
 export default function PatientDashboard() {
   const { user } = useAuth();
   const { socket } = useSocket();
   const [activeTab, setActiveTab] = useState('triage');
+  const [loading, setLoading] = useState(true);
 
   // State lists
   const [doctors, setDoctors] = useState([]);
+  const [doctorRatings, setDoctorRatings] = useState([]);
+  const [pendingFeedback, setPendingFeedback] = useState([]);
   const [appointments, setAppointments] = useState([]);
   const [invoices, setInvoices] = useState([]);
   const [prescriptions, setPrescriptions] = useState([]);
@@ -41,24 +44,165 @@ export default function PatientDashboard() {
   const [payMethod, setPayMethod] = useState('UPI');
   const [paying, setPaying] = useState(false);
 
+  // Settings states
+  const [reminders, setReminders] = useState({
+    channel: 'WhatsApp',
+    phoneNumber: '',
+    emailAddress: '',
+    language: 'English',
+    medication: true,
+    labTest: true,
+    appointment: true,
+    dnd: false
+  });
+  const [savingSettings, setSavingSettings] = useState(false);
+  
+  // Daily Health Log State
+  const [syncingWearable, setSyncingWearable] = useState(false);
+  const [dailyLog, setDailyLog] = useState({
+    heart_rate: '',
+    spo2: '',
+    sleep_hours: '',
+    steps: ''
+  });
+  const [hasLoggedToday, setHasLoggedToday] = useState(false);
+  const [lastLogTime, setLastLogTime] = useState(null);
+  const [timeRemaining, setTimeRemaining] = useState('');
+  const [refreshChart, setRefreshChart] = useState(0);
+
+  // Live countdown timer for the lock
+  useEffect(() => {
+    if (!lastLogTime) return;
+    
+    const calculateTimeLeft = () => {
+      const now = new Date().getTime();
+      const diff = lastLogTime + (24 * 60 * 60 * 1000) - now;
+      
+      if (diff <= 0) {
+        setHasLoggedToday(false);
+        setLastLogTime(null);
+        return false;
+      }
+      
+      const h = Math.floor(diff / (1000 * 60 * 60));
+      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((diff % (1000 * 60)) / 1000);
+      setTimeRemaining(`${h}h ${m}m ${s}s`);
+      return true;
+    };
+
+    calculateTimeLeft();
+    const interval = setInterval(() => {
+      if (!calculateTimeLeft()) {
+        clearInterval(interval);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [lastLogTime]);
+
+  const handleSyncWearable = async (e) => {
+    e.preventDefault();
+    if (!dailyLog.heart_rate || !dailyLog.spo2 || !dailyLog.sleep_hours || !dailyLog.steps) {
+      alert('Please fill out all vitals for today.');
+      return;
+    }
+
+    setSyncingWearable(true);
+    try {
+      const readings = [];
+      const d = new Date().toISOString();
+      
+      readings.push({ metric: 'heart_rate', value: Number(dailyLog.heart_rate), unit: 'bpm', recorded_at: d, source: 'Manual Entry' });
+      readings.push({ metric: 'spo2', value: Number(dailyLog.spo2), unit: '%', recorded_at: d, source: 'Manual Entry' });
+      readings.push({ metric: 'sleep_hours', value: Number(dailyLog.sleep_hours), unit: 'hours', recorded_at: d, source: 'Manual Entry' });
+      readings.push({ metric: 'steps', value: Number(dailyLog.steps), unit: 'count', recorded_at: d, source: 'Manual Entry' });
+
+      const res = await axios.post('/api/health-sync', {
+        patientId: user._id,
+        readings
+      });
+
+      if (res.data.success) {
+        alert('Daily health vitals successfully logged!');
+        setHasLoggedToday(true);
+        setLastLogTime(new Date().getTime());
+        setRefreshChart(prev => prev + 1);
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Failed to log daily vitals');
+    } finally {
+      setSyncingWearable(false);
+    }
+  };
+
   const fetchData = async () => {
     try {
-      const docsRes = await axios.get('/api/queue/doctors');
-      if (docsRes.data.success) setDoctors(docsRes.data.doctors);
+      const docRes = await axios.get('/api/queue/doctors');
+      if (docRes.data.success) {
+        setDoctors(docRes.data.doctors);
+      }
 
-      const apptRes = await axios.get('/api/queue/my-appointments');
-      if (apptRes.data.success) setAppointments(apptRes.data.appointments);
+      try {
+        const settingsRes = await axios.get('/api/patient/settings');
+        if (settingsRes.data.success && settingsRes.data.settings) {
+          setReminders(settingsRes.data.settings);
+        }
+      } catch (err) {
+        console.warn('Could not fetch settings', err);
+      }
 
-      const invRes = await axios.get('/api/billing/invoices');
-      if (invRes.data.success) setInvoices(invRes.data.invoices);
-
-      const rxRes = await axios.get('/api/pharmacy/prescriptions');
-      if (rxRes.data.success) setPrescriptions(rxRes.data.prescriptions);
-
+      const res = await axios.get('/api/queue/my-appointments');
+      if (res.data.success) {
+        setAppointments(res.data.appointments);
+      }
       const labRes = await axios.get('/api/lab/requests');
-      if (labRes.data.success) setLabRequests(labRes.data.requests);
+      if (labRes.data.success) {
+        setLabRequests(labRes.data.requests);
+      }
+      const rxRes = await axios.get('/api/pharmacy/prescriptions');
+      if (rxRes.data.success) {
+        setPrescriptions(rxRes.data.prescriptions);
+      }
+      const invoiceRes = await axios.get('/api/billing/invoices');
+      if (invoiceRes.data.success) {
+        setInvoices(invoiceRes.data.invoices);
+      }
+      
+      const lbRes = await axios.get('/api/admin/leaderboard');
+      if (lbRes?.data?.success) {
+        setDoctorRatings(lbRes.data.leaderboard);
+      }
+      
+      const pfRes = await axios.get('/api/feedback/pending');
+      if (pfRes?.data?.success) {
+        setPendingFeedback(pfRes.data.pending);
+      }
+
+      // Check if logged within last 24 hours
+      if (user?._id) {
+        const histRes = await axios.get(`/api/vitals/history/${user._id}?t=${Date.now()}`);
+        if (histRes.data.success && histRes.data.history && histRes.data.history.length > 0) {
+          const lastReading = histRes.data.history[histRes.data.history.length - 1];
+          const lastTime = new Date(lastReading.fullDate).getTime();
+          const now = new Date().getTime();
+          const hoursSinceLastLog = (now - lastTime) / (1000 * 60 * 60);
+          
+          if (hoursSinceLastLog < 24) {
+            setHasLoggedToday(true);
+            setLastLogTime(lastTime);
+          } else {
+            setHasLoggedToday(false);
+            setLastLogTime(null);
+          }
+        }
+      }
+
     } catch (err) {
-      console.error('Error fetching patient data:', err);
+      console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -76,11 +220,19 @@ export default function PatientDashboard() {
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    if (user?._id) {
+      const load = async () => { await fetchData(); };
+      load();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user?._id]);
 
   useEffect(() => {
-    if (activeTab === 'audit') fetchAuditLogs();
+    if (activeTab === 'audit') {
+      const loadAudit = async () => { await fetchAuditLogs(); };
+      loadAudit();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTab]);
 
   // Listen for real-time queue or medical changes
@@ -93,7 +245,7 @@ export default function PatientDashboard() {
     socket.on('prescription_created', () => fetchData());
     socket.on('prescription_dispensed', () => fetchData());
     socket.on('lab_request_created', () => fetchData());
-    socket.on('lab_completed', () => fetchData());
+    socket.on('lab_completed', () => { const update = async () => { await fetchData(); }; update(); });
 
     return () => {
       socket.off('queue_updated');
@@ -238,6 +390,15 @@ export default function PatientDashboard() {
             <ClipboardList className="inline mr-1" size={14} />
             My Activity Log
           </button>
+          <button
+            onClick={() => setActiveTab('ratings')}
+            className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+              activeTab === 'ratings' ? 'bg-blue-600 text-white shadow-md' : 'text-slate-600 hover:text-slate-800'
+            }`}
+          >
+            <Star className="inline mr-1" size={14} />
+            Doctor Rating
+          </button>
         </div>
 
         {/* Tab 1: AI Triage */}
@@ -258,7 +419,7 @@ export default function PatientDashboard() {
 
                 {bookingSuccess && (
                   <div className="mt-4 p-4 rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-600 text-xs font-semibold">
-                    Appointment booked! Check the "My Queue Tickets" tab to monitor your ticket live.
+                    Appointment booked! Check the &quot;My Queue Tickets&quot; tab to monitor your ticket live.
                   </div>
                 )}
 
@@ -327,18 +488,42 @@ export default function PatientDashboard() {
                             onChange={(e) => setDoctorSearch(e.target.value)} 
                             className="w-full px-3 py-2 rounded bg-white border border-slate-200 text-slate-800 text-xs focus:outline-none focus:border-blue-500 mb-1"
                           />
-                          <select
-                            value={bookingDocId}
-                            onChange={(e) => setBookingDocId(e.target.value)}
-                            className="w-full px-3 py-2 rounded bg-white border border-slate-200 text-slate-800 text-xs focus:outline-none focus:border-blue-500"
-                          >
-                            <option value="">-- Choose Doctor --</option>
-                            {doctors.filter(doc => doc.name.toLowerCase().includes(doctorSearch.toLowerCase()) || doc.department.toLowerCase().includes(doctorSearch.toLowerCase())).slice(0, 100).map((doc) => (
-                              <option key={doc._id} value={doc._id}>
-                                {doc.name} ({doc.department}) - {doc.hospital || 'Main Hospital'} - Cabin {doc.cabin || doc.room}
-                              </option>
+                          <div className="max-h-64 overflow-y-auto space-y-2 p-1">
+                            {doctors.filter(doc => doc.name.toLowerCase().includes(doctorSearch.toLowerCase()) || doc.department.toLowerCase().includes(doctorSearch.toLowerCase()))
+                              .map(doc => {
+                                const ratingData = doctorRatings.find(r => r.id === doc._id) || { avg_overall: 0, total_reviews: 0, top_tags: [] };
+                                return { ...doc, ...ratingData };
+                              })
+                              .sort((a, b) => b.avg_overall - a.avg_overall || b.total_reviews - a.total_reviews)
+                              .slice(0, 50).map((doc) => (
+                              <div 
+                                key={doc._id} 
+                                onClick={() => setBookingDocId(doc._id)}
+                                className={`p-3 rounded-lg border cursor-pointer transition-all ${bookingDocId === doc._id ? 'border-blue-500 bg-blue-50 shadow-md ring-1 ring-blue-500' : 'border-slate-200 bg-white hover:border-blue-300'}`}
+                              >
+                                <div className="flex justify-between items-start">
+                                  <div>
+                                    <div className="font-bold text-sm text-slate-800">{doc.name}</div>
+                                    <div className="text-[10px] text-slate-500 uppercase font-semibold">{doc.department} • Cabin {doc.cabin || doc.room}</div>
+                                  </div>
+                                  <div className="text-right">
+                                    <div className="flex items-center gap-1 text-amber-500 text-xs font-bold bg-amber-50 px-2 py-0.5 rounded">
+                                      <Star size={12} className="fill-amber-500" /> {doc.avg_overall > 0 ? doc.avg_overall : 'New'}
+                                    </div>
+                                    <div className="text-[10px] text-slate-400 mt-0.5">{doc.total_reviews} reviews</div>
+                                  </div>
+                                </div>
+                                {doc.top_tags && doc.top_tags.length > 0 && (
+                                  <div className="flex gap-1 mt-2 flex-wrap">
+                                    {doc.top_tags.slice(0, 2).map(t => (
+                                      <span key={t.tag} className="text-[9px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded-full">✓ {t.tag}</span>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
                             ))}
-                          </select>
+                            {doctors.length === 0 && <div className="text-xs text-slate-500 text-center py-4">No doctors found</div>}
+                          </div>
                         </div>
                         <div>
                           <label className="block text-[10px] text-slate-500 uppercase font-bold mb-1.5">Time Schedule</label>
@@ -404,67 +589,137 @@ export default function PatientDashboard() {
 
         {/* Tab 2: My Queue Tickets */}
         {activeTab === 'tickets' && (
-          <div className="border border-slate-200 bg-white/80 rounded-2xl p-6 glass-panel">
-            <h2 className="text-xl font-bold text-slate-800 mb-4">Your Active Tickets</h2>
-            
-            {appointments.length === 0 ? (
-              <div className="text-center py-12 border border-slate-200 rounded-xl bg-slate-50">
-                <Clock className="mx-auto text-slate-400 mb-3" size={32} />
-                <p className="text-slate-500 text-xs">No active queue tickets registered.</p>
-              </div>
-            ) : (
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs">
-                  <thead>
-                    <tr className="border-b border-slate-200 text-slate-500 uppercase tracking-wider font-bold">
-                      <th className="py-3 px-4">Doctor</th>
-                      <th className="py-3 px-4">Token</th>
-                      <th className="py-3 px-4">Slot</th>
-                      <th className="py-3 px-4">Priority</th>
-                      <th className="py-3 px-4">Status</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-zinc-800/60">
-                    {appointments.map((appt) => (
-                      <tr key={appt._id} className="hover:bg-slate-50">
-                        <td className="py-3.5 px-4 font-semibold text-slate-800">
-                          {appt.doctorName}
-                        </td>
-                        <td className="py-3.5 px-4 font-mono font-bold text-blue-600">
-                          #{appt.tokenNumber}
-                        </td>
-                        <td className="py-3.5 px-4 text-slate-600">{appt.timeSlot}</td>
-                        <td className="py-3.5 px-4">
-                          <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
-                            appt.priority === 2 ? 'bg-red-50 text-red-600' :
-                            appt.priority === 1 ? 'bg-amber-50 text-amber-600' :
-                            'bg-slate-100 text-slate-600'
-                          }`}>
-                            {appt.priority === 2 ? 'Emergency' : appt.priority === 1 ? 'High' : 'Normal'}
-                          </span>
-                        </td>
-                        <td className="py-3.5 px-4">
-                          <span className={`px-2 py-0.5 rounded text-[10px] font-bold capitalize ${
-                            appt.status === 'calling' ? 'bg-blue-600 text-white animate-pulse' :
-                            appt.status === 'waiting' ? 'bg-slate-100 text-slate-600' :
-                            appt.status === 'completed' ? 'bg-emerald-50 text-emerald-600' :
-                            'bg-red-50 text-red-600'
-                          }`}>
-                            {appt.status}
-                          </span>
-                        </td>
+          <div className="space-y-6">
+            <div className="border border-slate-200 bg-white/80 rounded-2xl p-6 glass-panel">
+              <h2 className="text-xl font-bold text-slate-800 mb-4">Your Active Tickets</h2>
+              
+              {appointments.length === 0 ? (
+                <div className="text-center py-12 border border-slate-200 rounded-xl bg-slate-50">
+                  <Clock className="mx-auto text-slate-400 mb-3" size={32} />
+                  <p className="text-slate-500 text-xs">No active queue tickets registered.</p>
+                </div>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs">
+                    <thead>
+                      <tr className="border-b border-slate-200 text-slate-500 uppercase tracking-wider font-bold">
+                        <th className="py-3 px-4">Doctor</th>
+                        <th className="py-3 px-4">Token</th>
+                        <th className="py-3 px-4">Slot</th>
+                        <th className="py-3 px-4">Priority</th>
+                        <th className="py-3 px-4">Status</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
+                    </thead>
+                    <tbody className="divide-y divide-zinc-800/60">
+                      {appointments.map((appt) => (
+                        <tr key={appt._id} className="hover:bg-slate-50">
+                          <td className="py-3.5 px-4 font-semibold text-slate-800">
+                            {appt.doctorName}
+                          </td>
+                          <td className="py-3.5 px-4 font-mono font-bold text-blue-600">
+                            #{appt.tokenNumber}
+                          </td>
+                          <td className="py-3.5 px-4 text-slate-600">{appt.timeSlot}</td>
+                          <td className="py-3.5 px-4">
+                            <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
+                              appt.priority === 2 ? 'bg-red-50 text-red-600' :
+                              appt.priority === 1 ? 'bg-amber-50 text-amber-600' :
+                              'bg-slate-100 text-slate-600'
+                            }`}>
+                              {appt.priority === 2 ? 'Emergency' : appt.priority === 1 ? 'High' : 'Normal'}
+                            </span>
+                          </td>
+                          <td className="py-3.5 px-4">
+                            <span className={`px-2 py-0.5 rounded text-[10px] font-bold capitalize ${
+                              appt.status === 'calling' ? 'bg-blue-600 text-white animate-pulse' :
+                              appt.status === 'waiting' ? 'bg-slate-100 text-slate-600' :
+                              appt.status === 'completed' ? 'bg-emerald-50 text-emerald-600' :
+                              'bg-red-50 text-red-600'
+                            }`}>
+                              {appt.status}
+                            </span>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
           </div>
         )}
 
         {/* Tab 3: Medical Records & Prescriptions */}
         {activeTab === 'medical' && (
           <div className="space-y-8">
+            
+            {/* Daily Manual Vitals Log */}
+            <div className="border border-slate-200 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-6 glass-panel relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-6 text-indigo-600/5 pointer-events-none">
+                <Activity size={120} />
+              </div>
+              <div className="flex items-center gap-2 text-indigo-600 text-xs font-mono font-bold tracking-wider mb-2">
+                <Sparkles size={14} />
+                DAILY HEALTH LOG
+              </div>
+              <h2 className="text-xl font-bold text-slate-800">Log Your Vitals</h2>
+              <p className="text-slate-600 text-xs mt-1 mb-4">Upload your daily health metrics manually so your doctor can track your 7-day health trend.</p>
+              
+              {hasLoggedToday ? (
+                <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-700 flex flex-col gap-2 text-sm font-bold shadow-sm">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle size={18} />
+                    You have recently logged your vitals.
+                  </div>
+                  <div className="text-emerald-600 font-medium ml-[26px]">
+                    You can submit your next health log in {timeRemaining}.
+                  </div>
+                </div>
+              ) : (
+                <form onSubmit={handleSyncWearable} className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                  <div>
+                    <label className="block text-[10px] uppercase font-bold text-slate-500 mb-1">Heart Rate (bpm)</label>
+                    <input type="number" required min="30" max="250" placeholder="e.g. 75"
+                      value={dailyLog.heart_rate} onChange={e => setDailyLog({...dailyLog, heart_rate: e.target.value})}
+                      className="w-full px-3 py-2 text-sm rounded-lg border border-indigo-200 focus:outline-none focus:border-indigo-500" />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] uppercase font-bold text-slate-500 mb-1">Blood O2 (%)</label>
+                    <input type="number" required min="50" max="100" placeholder="e.g. 98"
+                      value={dailyLog.spo2} onChange={e => setDailyLog({...dailyLog, spo2: e.target.value})}
+                      className="w-full px-3 py-2 text-sm rounded-lg border border-indigo-200 focus:outline-none focus:border-indigo-500" />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] uppercase font-bold text-slate-500 mb-1">Sleep (hrs)</label>
+                    <input type="number" required step="0.1" min="0" max="24" placeholder="e.g. 7.5"
+                      value={dailyLog.sleep_hours} onChange={e => setDailyLog({...dailyLog, sleep_hours: e.target.value})}
+                      className="w-full px-3 py-2 text-sm rounded-lg border border-indigo-200 focus:outline-none focus:border-indigo-500" />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] uppercase font-bold text-slate-500 mb-1">Steps Count</label>
+                    <input type="number" required min="0" placeholder="e.g. 8500"
+                      value={dailyLog.steps} onChange={e => setDailyLog({...dailyLog, steps: e.target.value})}
+                      className="w-full px-3 py-2 text-sm rounded-lg border border-indigo-200 focus:outline-none focus:border-indigo-500" />
+                  </div>
+                  
+                  <div className="col-span-2 md:col-span-4 mt-2">
+                    <button
+                      type="submit"
+                      disabled={syncingWearable}
+                      className="w-full py-2.5 bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] transition-all font-bold text-white rounded-lg text-sm cursor-pointer shadow-md shadow-indigo-500/20 flex items-center justify-center gap-2"
+                    >
+                      <Activity size={16} />
+                      {syncingWearable ? 'Saving...' : 'Submit Daily Log'}
+                    </button>
+                  </div>
+                </form>
+              )}
+
+              <div className="mt-6 border-t border-indigo-100 pt-6">
+                <WearableTrendChart patientId={user?._id} refreshTrigger={refreshChart} />
+              </div>
+            </div>
+
             <div className="border border-slate-200 bg-white/80 rounded-2xl p-6 glass-panel">
               <h2 className="text-lg font-bold text-slate-800 mb-4">Medication Prescriptions</h2>
               {prescriptions.length === 0 ? (
@@ -633,6 +888,8 @@ export default function PatientDashboard() {
           </div>
         )}
 
+
+
         {/* Simulated Payment Modal */}
         {payInvoice && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
@@ -715,7 +972,37 @@ export default function PatientDashboard() {
           </div>
         )}
 
+        {/* Tab 6: Doctor Rating */}
+        {activeTab === 'ratings' && (
+          <div className="space-y-6">
+            {pendingFeedback && pendingFeedback.length > 0 ? (
+              <div className="border border-amber-200 bg-amber-50 rounded-2xl p-6">
+                <h3 className="text-base font-bold text-amber-900 mb-2 flex items-center gap-2">
+                  <Star size={18} className="fill-amber-500 text-amber-500" /> Pending Feedback
+                </h3>
+                <p className="text-xs text-amber-700 mb-4">Please rate your recent completed appointments. Your feedback helps us improve patient care.</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {pendingFeedback.map(appt => (
+                    <FeedbackForm 
+                      key={appt._id} 
+                      appointmentId={appt._id} 
+                      doctorName={appt.doctorName} 
+                      onSubmitted={() => fetchData()} 
+                    />
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className="text-center py-12 border border-slate-200 rounded-xl bg-slate-50">
+                <Star className="mx-auto text-slate-400 mb-3" size={32} />
+                <p className="text-slate-500 text-xs">You have no pending feedback requests at this time.</p>
+              </div>
+            )}
+          </div>
+        )}
+
       </div>
+      <AIChatbot />
     </ProtectedRoute>
   );
 }

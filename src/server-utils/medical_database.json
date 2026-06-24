@@ -1,0 +1,402 @@
+[
+  {
+    "keywords": "fever dolo 650 paracetamol acetaminophen",
+    "fact": "Dolo 650 is a brand name for Paracetamol (also known as Acetaminophen). It is used to treat mild to moderate pain and reduce fevers. It is NOT Ibuprofen."
+  },
+  {
+    "keywords": "fever treatment mild temperature",
+    "fact": "The standard advice for a mild fever is to stay hydrated, rest, and take Paracetamol as prescribed. If symptoms persist for more than 3 days, consult a doctor."
+  },
+  {
+    "keywords": "antibiotics prescription",
+    "fact": "Never prescribe antibiotics to a patient without a physical doctor's consultation."
+  },
+  {
+    "keywords": "headache migraine water rest",
+    "fact": "For headaches or mild migraines, ensure the patient is drinking enough water, resting in a quiet, dark room, and can take standard OTC painkillers like Paracetamol."
+  },
+  {
+    "keywords": "cough dry wet syrup",
+    "fact": "For a mild cough, honey and warm water can soothe the throat. For persistent coughs, an OTC cough syrup might be recommended, but a doctor should be consulted if it lasts over a week."
+  },
+  {
+    "keywords": "stomach ache pain gastroenteritis food poisoning",
+    "fact": "For a mild stomach ache, recommend a bland diet (BRAT diet: Bananas, Rice, Applesauce, Toast) and plenty of fluids. Avoid spicy or fatty foods."
+  },
+  {
+    "keywords": "diarrhea loose motions dehydration ors",
+    "fact": "The primary treatment for diarrhea is preventing dehydration. Recommend ORS (Oral Rehydration Salts) and plenty of clear fluids. Do not take anti-diarrheal medication without consulting a doctor if there is a fever."
+  },
+  {
+    "keywords": "cold runny nose sneezing allergy cetirizine",
+    "fact": "For a common cold or allergic rhinitis, an antihistamine like Cetirizine can help with sneezing and a runny nose. Steam inhalation is also highly effective."
+  },
+  {
+    "keywords": "sore throat throat pain gargle salt",
+    "fact": "A sore throat can be treated with warm salt water gargles 3-4 times a day and soothing lozenges. Avoid cold drinks."
+  },
+  {
+    "keywords": "dengue fever severe body ache joints",
+    "fact": "Dengue fever often presents with high fever, severe body aches, and joint pain. Paracetamol is safe to use. Strict warning: Avoid Ibuprofen or Aspirin as they can increase bleeding risk in Dengue."
+  },
+  {
+    "keywords": "malaria chills shivering fever",
+    "fact": "Malaria symptoms include cyclical fevers, chills, and profuse sweating. It requires a specific blood test and prescription anti-malarial medication. Consult a doctor immediately."
+  },
+  {
+    "keywords": "typhoid fever weakness stomach",
+    "fact": "Typhoid is a bacterial infection treated with specific antibiotics prescribed by a doctor. Prevent it by drinking boiled or purified water and eating freshly cooked food."
+  },
+  {
+    "keywords": "cuts wounds bleeding first aid",
+    "fact": "For minor cuts, wash the area with clean water and mild soap, apply an antiseptic cream, and cover with a sterile bandage."
+  },
+  {
+    "keywords": "burns fire hot water first aid",
+    "fact": "For minor burns, immediately run cool (not ice-cold) water over the affected area for 10-15 minutes. Do not apply butter or toothpaste. Apply an antibiotic ointment and a loose bandage."
+  },
+  {
+    "keywords": "sprain ankle wrist twist ice",
+    "fact": "For a sprain, remember R.I.C.E: Rest, Ice, Compression, and Elevation. Apply an ice pack for 15-20 minutes every few hours."
+  },
+  {
+    "keywords": "acidity heartburn gerd antacid",
+    "fact": "For heartburn or acidity, OTC antacids (like Gelusil or Digene) can provide quick relief. Advise the patient to avoid lying down immediately after meals and to reduce spicy food intake."
+  },
+  {
+    "keywords": "constipation hard stool fiber",
+    "fact": "To relieve constipation, increase dietary fiber (fruits, vegetables, whole grains) and water intake. Mild OTC laxatives can be used if diet changes don't work."
+  },
+  {
+    "keywords": "vomiting nausea throwing up",
+    "fact": "For vomiting, wait 30-60 minutes after the last episode before sipping small amounts of clear liquids or ORS. If vomiting is severe or continuous, seek medical attention."
+  },
+  {
+    "keywords": "chest pain heart attack emergency",
+    "fact": "EMERGENCY: Chest pain can be a sign of a heart attack, especially if accompanied by shortness of breath, sweating, or pain radiating to the arm or jaw. Tell the patient to seek immediate emergency medical care."
+  },
+  {
+    "keywords": "breathing difficulty asthma shortness of breath",
+    "fact": "EMERGENCY: Severe shortness of breath or difficulty breathing requires immediate emergency care. If the patient has known asthma and a prescribed inhaler, they should use it immediately."
+  },
+  {
+    "keywords": "stroke paralysis face drooping speech",
+    "fact": "EMERGENCY: Suspect a stroke if there is sudden face drooping, arm weakness, or speech difficulty (F.A.S.T.). Seek emergency medical care immediately."
+  },
+  {
+    "keywords": "anaphylaxis allergy peanut swelling throat",
+    "fact": "EMERGENCY: Severe allergic reactions (anaphylaxis) cause throat swelling and difficulty breathing. Use an EpiPen immediately if available and seek emergency care."
+  },
+  {
+    "keywords": "appendicitis lower right abdomen pain",
+    "fact": "EMERGENCY: Severe pain in the lower right abdomen, often accompanied by fever and vomiting, can indicate appendicitis. Seek immediate surgical consultation."
+  },
+  {
+    "keywords": "seizure epilepsy shaking fit",
+    "fact": "EMERGENCY: During a seizure, clear the area of hard objects, cushion the patient's head, and turn them on their side. Do not put anything in their mouth. Seek emergency care if it lasts over 5 minutes."
+  },
+  {
+    "keywords": "poisoning swallowed chemical bleach",
+    "fact": "EMERGENCY: If someone swallows a poisonous substance, do not induce vomiting unless instructed by a poison control center. Seek emergency care immediately."
+  },
+  {
+    "keywords": "choking block airway heimlich",
+    "fact": "EMERGENCY: For a conscious choking person who cannot cough or speak, perform abdominal thrusts (Heimlich maneuver). Seek emergency help."
+  },
+  {
+    "keywords": "heat stroke exhaustion hot weather",
+    "fact": "EMERGENCY: Heat stroke (hot dry skin, confusion, high body temp) is a medical emergency. Cool the person rapidly and seek help. Heat exhaustion (heavy sweating, weakness) requires resting in a cool place and hydration."
+  },
+  {
+    "keywords": "frostbite cold numb toes fingers",
+    "fact": "For frostbite, move to a warm place and gradually warm the affected area with warm (not hot) water. Do not rub the skin or use direct heat like a stove."
+  },
+  {
+    "keywords": "asthma attack inhaler wheezing",
+    "fact": "For a mild asthma attack, use a prescribed rescue inhaler (e.g., Albuterol) as directed. If symptoms do not improve quickly, seek emergency medical care."
+  },
+  {
+    "keywords": "bronchitis chest cough mucus",
+    "fact": "Acute bronchitis is usually viral. Recommend rest, hydration, and a humidifier. Antibiotics are generally not needed unless a bacterial infection is suspected by a doctor."
+  },
+  {
+    "keywords": "pneumonia lung infection deep cough",
+    "fact": "Pneumonia symptoms include a deep cough, fever, and shortness of breath. It requires a doctor's evaluation and often prescription antibiotics or antivirals."
+  },
+  {
+    "keywords": "copd emphysema breathing difficulty",
+    "fact": "Chronic Obstructive Pulmonary Disease (COPD) requires long-term management with prescribed inhalers. Exacerbations with worsening shortness of breath need prompt medical attention."
+  },
+  {
+    "keywords": "sinusitis facial pain nasal congestion",
+    "fact": "Sinusitis causes facial pain and pressure, and thick nasal discharge. Saline nasal sprays and steam inhalation help. Consult a doctor if it lasts over 10 days."
+  },
+  {
+    "keywords": "hypertension high blood pressure silent killer",
+    "fact": "Hypertension often has no symptoms. Management includes lifestyle changes (low sodium diet, exercise) and prescribed medications. Regular monitoring is essential."
+  },
+  {
+    "keywords": "hypotension low blood pressure dizzy standing",
+    "fact": "Low blood pressure can cause dizziness upon standing. Slowly changing positions and staying hydrated can help. If fainting occurs, consult a doctor."
+  },
+  {
+    "keywords": "angina chest pain stable unstable",
+    "fact": "Stable angina is predictable chest pain managed with rest and prescribed nitroglycerin. Unstable angina is a change in the usual pattern and requires emergency care."
+  },
+  {
+    "keywords": "palpitations racing heart fluttering",
+    "fact": "Occasional palpitations can be caused by stress, caffeine, or anxiety. If accompanied by dizziness, shortness of breath, or chest pain, seek immediate medical attention."
+  },
+  {
+    "keywords": "tension headache band tight stress",
+    "fact": "Tension headaches feel like a tight band around the head. Stress management, relaxation techniques, and OTC pain relievers (like Paracetamol or Ibuprofen) can help."
+  },
+  {
+    "keywords": "vertigo dizziness spinning room",
+    "fact": "Vertigo is a sensation that the room is spinning. It can be caused by inner ear issues. Recommend sitting or lying still until it passes and consulting an ENT doctor."
+  },
+  {
+    "keywords": "neuropathy tingling numbness diabetes",
+    "fact": "Peripheral neuropathy causes tingling or numbness, often in hands and feet, frequently related to diabetes. Requires a doctor's evaluation for proper management."
+  },
+  {
+    "keywords": "arthritis joint pain swelling stiff",
+    "fact": "Arthritis causes joint pain and stiffness. Management includes gentle exercise, weight management, and prescribed or OTC anti-inflammatory medications."
+  },
+  {
+    "keywords": "back pain lower back lifting",
+    "fact": "For acute lower back pain, recommend short periods of rest, applying heat or ice, and gentle stretching. Avoid heavy lifting. Consult a doctor if pain radiates down the leg."
+  },
+  {
+    "keywords": "gout big toe intense pain uric acid",
+    "fact": "Gout attacks cause sudden, severe joint pain, often in the big toe. Requires specific prescription medications. Recommend avoiding alcohol and purine-rich foods."
+  },
+  {
+    "keywords": "osteoporosis bone density fracture",
+    "fact": "Osteoporosis weakens bones, increasing fracture risk. Prevention and management involve calcium, vitamin D, weight-bearing exercise, and prescribed medications."
+  },
+  {
+    "keywords": "acne pimples breakouts face",
+    "fact": "For mild acne, recommend gentle cleansing and OTC topical treatments with benzoyl peroxide or salicylic acid. Avoid picking at pimples to prevent scarring."
+  },
+  {
+    "keywords": "eczema itchy red dry skin eczema",
+    "fact": "Eczema causes dry, itchy skin. Use frequent moisturizers, avoid harsh soaps, and avoid scratching. A doctor may prescribe topical corticosteroids."
+  },
+  {
+    "keywords": "psoriasis scaly skin plaques silver",
+    "fact": "Psoriasis causes scaly, itchy plaques. Management requires a dermatologist's evaluation for specific topical or systemic treatments."
+  },
+  {
+    "keywords": "hives urticaria allergic rash raised",
+    "fact": "Hives are raised, itchy welts often due to an allergic reaction. OTC antihistamines (like Cetirizine) can provide relief. Seek emergency care if breathing is difficult."
+  },
+  {
+    "keywords": "ringworm fungal infection circular rash",
+    "fact": "Ringworm is a fungal infection causing a circular rash. Treat with OTC topical antifungal creams. Keep the area clean and dry."
+  },
+  {
+    "keywords": "scabies intense itching mites burrows",
+    "fact": "Scabies causes intense itching, especially at night. It requires a prescription topical scabicide. All household members should be treated simultaneously."
+  },
+  {
+    "keywords": "sunburn red skin aloe vera sun",
+    "fact": "For mild sunburn, apply cool compresses and aloe vera gel. Take OTC pain relievers if needed. Drink plenty of water and avoid further sun exposure."
+  },
+  {
+    "keywords": "uti urinary tract infection burning pee",
+    "fact": "A UTI causes a burning sensation during urination and frequent urges to urinate. It requires a doctor's evaluation and typically prescription antibiotics. Drink plenty of water."
+  },
+  {
+    "keywords": "yeast infection vaginal thrush itching",
+    "fact": "Vaginal yeast infections cause itching and thick, white discharge. Treatable with OTC antifungal creams or suppositories, but consult a doctor if it's the first occurrence."
+  },
+  {
+    "keywords": "flu influenza body aches sudden fever",
+    "fact": "The flu causes sudden high fever, body aches, and fatigue. Rest and hydration are key. Antiviral medications may be prescribed if caught early."
+  },
+  {
+    "keywords": "covid-19 loss of taste smell breathing",
+    "fact": "COVID-19 symptoms vary widely. Recommend isolation, rest, and hydration. Seek medical attention for difficulty breathing, persistent chest pain, or confusion."
+  },
+  {
+    "keywords": "strep throat severe sore throat white patches",
+    "fact": "Strep throat causes a severe sore throat, often with white patches on the tonsils. It is a bacterial infection requiring a doctor's diagnosis and prescription antibiotics."
+  },
+  {
+    "keywords": "ear infection earache fluid pain",
+    "fact": "Ear infections cause pain and sometimes fluid drainage. A doctor should examine the ear to determine if antibiotics are needed or if it's a viral issue."
+  },
+  {
+    "keywords": "pink eye conjunctivitis red eye discharge",
+    "fact": "Pink eye causes redness and discharge. Viral cases resolve on their own, but bacterial cases require prescription antibiotic eye drops. It is highly contagious, so wash hands frequently."
+  },
+  {
+    "keywords": "diabetes type 1 insulin sugar blood",
+    "fact": "Type 1 diabetes requires lifelong insulin therapy and blood sugar monitoring. Any unusual symptoms (extreme thirst, frequent urination) require immediate medical attention."
+  },
+  {
+    "keywords": "diabetes type 2 blood sugar lifestyle",
+    "fact": "Type 2 diabetes is managed with diet, exercise, and often oral medications or insulin. Regular check-ups are essential to prevent complications."
+  },
+  {
+    "keywords": "hypoglycemia low blood sugar dizzy sweating",
+    "fact": "Hypoglycemia causes sweating, shaking, and confusion. Treat immediately with a fast-acting carbohydrate (like fruit juice or glucose tablets)."
+  },
+  {
+    "keywords": "hypothyroidism underactive thyroid weight gain tired",
+    "fact": "Hypothyroidism causes fatigue, weight gain, and cold sensitivity. It is treated with daily prescription thyroid hormone replacement medication."
+  },
+  {
+    "keywords": "hyperthyroidism overactive thyroid weight loss heart racing",
+    "fact": "Hyperthyroidism causes weight loss, rapid heartbeat, and anxiety. It requires specialized medical treatment and monitoring."
+  },
+  {
+    "keywords": "anxiety panic attacks worry stress",
+    "fact": "Anxiety and panic attacks can cause physical symptoms like a racing heart and shortness of breath. Recommend deep breathing exercises and consulting a mental health professional."
+  },
+  {
+    "keywords": "depression sadness low mood lack of interest",
+    "fact": "Depression is a medical condition causing persistent sadness and loss of interest. Recommend consulting a doctor or mental health professional for therapy and/or medication."
+  },
+  {
+    "keywords": "insomnia sleeping difficulty sleep hygiene",
+    "fact": "For insomnia, recommend good sleep hygiene: a consistent sleep schedule, limiting screen time before bed, and avoiding caffeine late in the day. Consult a doctor if persistent."
+  },
+  {
+    "keywords": "chickenpox varicella itchy blisters kids",
+    "fact": "Chickenpox causes an itchy, blister-like rash. It's highly contagious. Recommend calamine lotion and oatmeal baths. Do not use Aspirin in children due to Reye's syndrome risk."
+  },
+  {
+    "keywords": "measles red rash spots fever child",
+    "fact": "Measles is a highly contagious viral illness causing a characteristic red rash and fever. It is preventable by vaccination. Suspected cases must be reported to a doctor immediately."
+  },
+  {
+    "keywords": "hand foot mouth disease blisters children hfmd",
+    "fact": "HFMD is common in young children, causing sores in the mouth and a rash on the hands and feet. It is viral and requires supportive care (hydration, pain relief)."
+  },
+  {
+    "keywords": "diaper rash baby red bottom",
+    "fact": "For diaper rash, change diapers frequently, clean the area gently, and use a barrier cream containing zinc oxide. Expose the area to air when possible."
+  },
+  {
+    "keywords": "dysmenorrhea menstrual cramps period pain",
+    "fact": "For severe menstrual cramps, recommend a heating pad to the lower abdomen and OTC NSAIDs like Ibuprofen or Naproxen, taken with food."
+  },
+  {
+    "keywords": "pms premenstrual syndrome mood swings bloating",
+    "fact": "PMS symptoms like bloating and mood swings can be managed with a healthy diet, regular exercise, and OTC pain relievers. Consult a doctor if symptoms are severe."
+  },
+  {
+    "keywords": "menopause hot flashes night sweats",
+    "fact": "Menopause can cause hot flashes and sleep disturbances. Lifestyle changes (cool environments, avoiding spicy foods) help. A doctor can discuss Hormone Replacement Therapy (HRT)."
+  },
+  {
+    "keywords": "pcos polycystic ovary irregular periods acne",
+    "fact": "PCOS can cause irregular periods, acne, and weight gain. Management involves lifestyle changes and specific medications prescribed by a doctor."
+  },
+  {
+    "keywords": "endometriosis severe pelvic pain periods",
+    "fact": "Endometriosis causes severe pelvic pain, especially during periods. It requires a doctor's diagnosis and management, which may include hormones or surgery."
+  },
+  {
+    "keywords": "bph enlarged prostate urinary flow men",
+    "fact": "Benign Prostatic Hyperplasia (BPH) causes frequent urination and a weak stream in older men. Requires a doctor's evaluation to rule out other issues and prescribe medication."
+  },
+  {
+    "keywords": "erectile dysfunction ed impotence",
+    "fact": "Erectile dysfunction is common and can be a sign of underlying health issues like heart disease or diabetes. Recommend consulting a doctor for evaluation and treatment options."
+  },
+  {
+    "keywords": "anemia iron deficiency pale tired",
+    "fact": "Iron-deficiency anemia causes fatigue and pale skin. It requires a blood test for diagnosis. Treatment involves iron supplements prescribed by a doctor and an iron-rich diet."
+  },
+  {
+    "keywords": "vitamin d deficiency bone pain weak",
+    "fact": "Vitamin D deficiency is common and can cause bone pain and muscle weakness. A blood test is needed for diagnosis. Treatment involves sunlight exposure and prescribed supplements."
+  },
+  {
+    "keywords": "dehydration dry mouth dark urine thirsty",
+    "fact": "Dehydration is indicated by extreme thirst, dry mouth, and dark urine. Recommend drinking plenty of fluids or ORS. Seek emergency care if confused or unable to keep fluids down."
+  },
+  {
+    "keywords": "toothache dental pain cavity swelling",
+    "fact": "For a toothache, recommend warm salt water rinses and OTC pain relievers. The patient must consult a dentist as soon as possible, especially if there is swelling."
+  },
+  {
+    "keywords": "gingivitis bleeding gums brushing",
+    "fact": "Bleeding gums while brushing indicates gingivitis. Recommend improved oral hygiene (brushing twice daily, flossing) and scheduling a dental cleaning."
+  },
+  {
+    "keywords": "oral thrush white patches mouth tongue",
+    "fact": "Oral thrush is a fungal infection causing white patches in the mouth. It requires a prescription antifungal mouthwash or lozenge from a doctor or dentist."
+  },
+  {
+    "keywords": "mouth ulcers canker sores lips",
+    "fact": "Mouth ulcers usually heal on their own in 1-2 weeks. Avoid spicy or acidic foods. OTC topical gels can help numb the pain."
+  },
+  {
+    "keywords": "dry eye gritty burning drops",
+    "fact": "For dry, gritty eyes, recommend OTC artificial tears (lubricating eye drops). Avoid screen time and environments with dry air."
+  },
+  {
+    "keywords": "sty stye red bump eyelid",
+    "fact": "A sty is a painful red bump on the eyelid. Apply a warm, damp compress for 10-15 minutes several times a day. Never squeeze or pop a sty."
+  },
+  {
+    "keywords": "glaucoma eye pressure vision loss",
+    "fact": "Glaucoma is a serious eye condition causing vision loss due to high pressure. It requires regular eye exams and lifelong use of prescribed eye drops to prevent blindness."
+  },
+  {
+    "keywords": "cataracts cloudy vision aging eye",
+    "fact": "Cataracts cause cloudy vision, especially in older adults. When vision is significantly impaired, surgery is required to replace the cloudy lens."
+  },
+  {
+    "keywords": "spina bifida neural tube birth defect",
+    "fact": "Spina bifida is a birth defect affecting the spinal cord. Pregnant women are advised to take folic acid to reduce the risk. Management requires specialized medical care."
+  },
+  {
+    "keywords": "rabies dog bite animal scratch",
+    "fact": "EMERGENCY: Any animal bite or scratch, especially from a stray dog or bat, requires immediate medical attention. Wash the wound thoroughly with soap and water and seek post-exposure prophylaxis (rabies vaccine) immediately."
+  },
+  {
+    "keywords": "snake bite venomous emergency",
+    "fact": "EMERGENCY: Keep the patient calm and still to slow the spread of venom. Immobilize the bitten limb below heart level and seek emergency medical care immediately. Do not attempt to suck out the venom or apply a tourniquet."
+  },
+  {
+    "keywords": "tuberculosis tb persistent cough blood weight loss",
+    "fact": "A persistent cough lasting more than 3 weeks, coughing up blood, and unexplained weight loss are symptoms of TB. It requires immediate medical testing and a strict, long-term course of antibiotics."
+  },
+  {
+    "keywords": "leukemia blood cancer bruising fatigue infection",
+    "fact": "Frequent infections, unexplained bruising or bleeding, and extreme fatigue can be signs of leukemia. Requires comprehensive medical workup and oncology care."
+  },
+  {
+    "keywords": "appendicitis rebound tenderness mcburney",
+    "fact": "EMERGENCY: Pain that starts around the navel and shifts to the lower right abdomen, worsening with movement or coughing, is a classic sign of appendicitis. Seek immediate medical attention."
+  },
+  {
+    "keywords": "cholecystitis gallstones right upper quadrant pain after eating",
+    "fact": "Severe pain in the upper right abdomen, especially after a fatty meal, indicates a possible gallbladder issue. Requires a medical evaluation and possibly an ultrasound."
+  },
+  {
+    "keywords": "kidney stones flank pain renal colic blood urine",
+    "fact": "Kidney stones cause excruciating pain in the side and back, sometimes radiating to the groin. Blood in the urine is common. Encourage hydration and seek medical care for pain management and evaluation."
+  },
+  {
+    "keywords": "meningitis stiff neck severe headache fever photophobia",
+    "fact": "EMERGENCY: A sudden high fever, severe headache, and stiff neck (inability to touch chin to chest) are signs of meningitis. Seek emergency medical care immediately."
+  },
+  {
+    "keywords": "sepsis severe infection confusion rapid breathing",
+    "fact": "EMERGENCY: Sepsis is a life-threatening response to infection. Symptoms include confusion, rapid heart rate, fever, and extreme pain. Seek emergency medical care immediately."
+  },
+  {
+    "keywords": "dvt deep vein thrombosis leg swelling red calf pain",
+    "fact": "EMERGENCY: Sudden swelling, redness, and pain in one leg (usually the calf) can indicate a DVT (blood clot). Seek immediate medical evaluation to prevent pulmonary embolism."
+  },
+  {
+    "keywords": "pulmonary embolism pe chest pain sudden shortness breath blood clot",
+    "fact": "EMERGENCY: Sudden shortness of breath and chest pain that worsens with deep breathing can indicate a blood clot in the lungs. Seek emergency medical care immediately."
+  }
+]

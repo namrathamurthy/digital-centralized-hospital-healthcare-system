@@ -9,6 +9,7 @@ const { verifySession } = require('../../../../server-utils/auth');
 const { broadcastEvent } = require('../../../../server-utils/socket');
 const { writeLog } = require('../../../../server-utils/logger');
 const { DEPARTMENT_FEES, LAB_TEST_PRICES, getMedicinePrice } = require('../../../../server-utils/pricing');
+const { scheduleReminders } = require('../../../../server-utils/reminderService');
 
 export async function POST(req) {
   await connectDB();
@@ -23,7 +24,7 @@ export async function POST(req) {
       return NextResponse.json({ error: 'Doctor profile not found' }, { status: 404 });
     }
 
-    const { appointmentId, diagnosis, medications, labTests, prescriptionFile, labTestFile } = await req.json();
+    const { appointmentId, diagnosis, medications, labTests, prescriptionFile, labTestFile, voiceTranscript, icd10Code, generalInstructions, followUp } = await req.json();
 
     if (!appointmentId) {
       return NextResponse.json({ error: 'Missing appointmentId' }, { status: 400 });
@@ -51,6 +52,10 @@ export async function POST(req) {
         doctorId: doctor._id,
         doctorName: doctor.name,
         diagnosis: diagnosis || 'N/A',
+        icd10Code,
+        voiceTranscript,
+        generalInstructions,
+        followUp,
         medications: finalMeds,
         status: 'pending',
         attachmentData: prescriptionFile?.data,

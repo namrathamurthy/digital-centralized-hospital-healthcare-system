@@ -31,12 +31,20 @@ export default function ReceptionistDashboard() {
   // Cabin assignment states
   const [editingCabin, setEditingCabin] = useState(null);
   const [tempCabin, setTempCabin] = useState('');
+  
+  const [activeTab, setActiveTab] = useState('queue');
+  const [leaderboard, setLeaderboard] = useState([]);
 
   const fetchData = async () => {
     try {
-      const docsRes = await axios.get('/api/queue/doctors');
-      if (docsRes.data.success) setDoctors(docsRes.data.doctors);
-
+      const docRes = await axios.get('/api/queue/doctors');
+      if (docRes.data.success) {
+        setDoctors(docRes.data.doctors);
+      }
+      const lbRes = await axios.get('/api/admin/leaderboard');
+      if (lbRes.data.success) {
+        setLeaderboard(lbRes.data.leaderboard);
+      } 
       const apptRes = await axios.get('/api/receptionist/queue');
       if (apptRes.data.success) setAppointments(apptRes.data.appointments);
 
@@ -351,10 +359,31 @@ export default function ReceptionistDashboard() {
             </div>
           </div>
 
-          {/* Right: Global Queue Control Board */}
+          {/* Right: Global Queue & Leaderboard */}
           <div className="lg:col-span-8 space-y-6">
-            <div className="border border-slate-200 bg-white/80 rounded-2xl p-6 glass-panel">
-              <h2 className="text-lg font-bold text-slate-800 mb-4">Ecosystem Active Queue tickets</h2>
+            
+            <div className="flex gap-2 bg-white p-1 border border-slate-200 rounded-xl w-fit">
+              <button
+                onClick={() => setActiveTab('queue')}
+                className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  activeTab === 'queue' ? 'bg-blue-600 text-white shadow-md' : 'text-slate-600 hover:text-slate-800'
+                }`}
+              >
+                Central Registry
+              </button>
+              <button
+                onClick={() => setActiveTab('leaderboard')}
+                className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  activeTab === 'leaderboard' ? 'bg-blue-600 text-white shadow-md' : 'text-slate-600 hover:text-slate-800'
+                }`}
+              >
+                Doctor Leaderboard
+              </button>
+            </div>
+
+            {activeTab === 'queue' && (
+              <div className="border border-slate-200 bg-white/80 rounded-2xl p-6 glass-panel">
+                <h2 className="text-lg font-bold text-slate-800 mb-4">Ecosystem Active Queue tickets</h2>
 
               {loading ? (
                 <p className="text-slate-500 text-xs">Loading active queue...</p>
@@ -430,6 +459,51 @@ export default function ReceptionistDashboard() {
                 </div>
               )}
             </div>
+            )}
+
+            {activeTab === 'leaderboard' && (
+              <div className="border border-slate-200 bg-white/80 rounded-2xl p-6 glass-panel">
+                <h2 className="text-lg font-bold text-slate-800 mb-4">Hospital-wide Doctor Ratings</h2>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs">
+                    <thead>
+                      <tr className="border-b border-slate-200 text-slate-500 uppercase font-bold tracking-wider">
+                        <th className="py-3 px-3">Doctor</th>
+                        <th className="py-3 px-3">Department</th>
+                        <th className="py-3 px-3 text-center">Score</th>
+                        <th className="py-3 px-3 text-center">Reviews</th>
+                        <th className="py-3 px-3">Top Tags</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-zinc-100">
+                      {leaderboard.map((doc) => {
+                        const isUnderperforming = doc.avg_overall > 0 && doc.avg_overall < 3.5 && doc.total_reviews >= 3;
+                        return (
+                          <tr key={doc.id} className={`hover:bg-slate-50 ${isUnderperforming ? 'bg-red-50/50' : ''}`}>
+                            <td className="py-3.5 px-3 font-semibold text-slate-800 flex items-center gap-2">
+                              {doc.name} 
+                              {isUnderperforming && <span className="bg-red-100 text-red-600 text-[9px] px-1.5 py-0.5 rounded font-bold uppercase">Needs Review</span>}
+                            </td>
+                            <td className="py-3.5 px-3 text-slate-600">{doc.department}</td>
+                            <td className="py-3.5 px-3 text-center font-bold text-amber-500">{doc.avg_overall > 0 ? doc.avg_overall : '-'}</td>
+                            <td className="py-3.5 px-3 text-center text-slate-500">{doc.total_reviews}</td>
+                            <td className="py-3.5 px-3">
+                              {doc.top_tags && doc.top_tags.length > 0 ? (
+                                <div className="flex flex-wrap gap-1">
+                                  {doc.top_tags.slice(0, 2).map(t => (
+                                    <span key={t.tag} className="bg-slate-100 text-slate-600 text-[9px] px-1.5 py-0.5 rounded-full">{t.tag}</span>
+                                  ))}
+                                </div>
+                              ) : <span className="text-slate-400 italic">None</span>}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

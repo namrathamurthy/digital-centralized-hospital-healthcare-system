@@ -9,6 +9,8 @@ try {
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     role: { type: String, enum: ['patient', 'doctor', 'receptionist', 'billing', 'lab', 'pharmacy'], required: true },
+    allergies: [{ type: String }],
+    currentMeds: [{ type: String }],
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
   });

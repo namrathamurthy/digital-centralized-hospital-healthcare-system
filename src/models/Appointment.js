@@ -12,7 +12,7 @@ try {
     tokenNumber: { type: Number, required: true },
     date: { type: String, required: true },
     timeSlot: { type: String, required: true }, // e.g. "09:00 - 09:30" or "Walk-in"
-    status: { type: String, enum: ['waiting', 'calling', 'completed', 'cancelled'], default: 'waiting' },
+    status: { type: String, enum: ['waiting', 'calling', 'completed', 'cancelled', 'discharged'], default: 'waiting' },
     triageData: {
       symptoms: { type: String },
       severity: { type: String }, // Low, Medium, High, Emergency

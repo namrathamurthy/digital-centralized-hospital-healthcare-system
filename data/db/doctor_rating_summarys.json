@@ -1,0 +1,32 @@
+[
+  {
+    "_id": "vpzc8ilaemq9arisb",
+    "createdAt": "2026-06-23T12:15:41.878Z",
+    "updatedAt": "2026-06-23T12:15:41.878Z",
+    "avg_overall": 4,
+    "avg_comm": 4,
+    "avg_wait": 5,
+    "avg_diagnosis": 3,
+    "avg_bedside": 4,
+    "total_reviews": 1,
+    "top_tags": [
+      {
+        "tag": "On time",
+        "count": 1
+      },
+      {
+        "tag": "Thorough examination",
+        "count": 1
+      },
+      {
+        "tag": "Friendly staff",
+        "count": 1
+      },
+      {
+        "tag": "Explains clearly",
+        "count": 1
+      }
+    ],
+    "last_updated": "2026-06-23T12:15:41.878Z"
+  }
+]

@@ -11,11 +11,20 @@ try {
     doctorId: { type: String, required: true },
     doctorName: { type: String, required: true },
     diagnosis: { type: String, required: true },
+    icd10Code: { type: String },
+    voiceTranscript: { type: String },
+    generalInstructions: { type: String },
+    followUp: { type: String },
     medications: [{
       name: { type: String, required: true },
       dosage: { type: String, required: true },
       frequency: { type: String },
-      duration: { type: String }
+      duration: { type: String },
+      timing: { type: String },
+      routeOfAdmin: { type: String },
+      instruction: { type: String },
+      allergyConflict: { type: Boolean, default: false },
+      conflictReason: { type: String }
     }],
     status: { type: String, enum: ['pending', 'dispensed'], default: 'pending' },
     attachmentData: { type: String },

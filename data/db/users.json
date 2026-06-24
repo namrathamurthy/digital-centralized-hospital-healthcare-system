@@ -2,11 +2,21 @@
   {
     "_id": "sinb68cramq9aris4",
     "createdAt": "2026-06-11T09:30:26.644Z",
-    "updatedAt": "2026-06-11T09:30:26.644Z",
+    "updatedAt": "2026-06-22T09:26:34.968Z",
     "name": "John Doe (Patient)",
     "email": "patient@smartcare.com",
     "password": "$2b$10$W.Jgqm1LlcPXT0IEhni84ON1meRXWnPRHtbkU0BbvRZTQCf.dIdKi",
-    "role": "patient"
+    "role": "patient",
+    "reminderSettings": {
+      "channel": "Email",
+      "language": "English",
+      "medication": true,
+      "labTest": true,
+      "appointment": true,
+      "dnd": false,
+      "emailAddress": "pienaha49@gmail.com",
+      "phoneNumber": "+917899708118"
+    }
   },
   {
     "_id": "y2xh2eap5mq9aris8",

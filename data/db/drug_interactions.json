@@ -1,0 +1,26 @@
+[
+  {
+    "_id": "di_1",
+    "drug_a": "Ibuprofen",
+    "drug_b": "Clopidogrel",
+    "severity": "severe",
+    "description": "Increased risk of bleeding due to combined antiplatelet effect and mucosal damage.",
+    "recommendation": "Avoid combination if possible. Monitor closely for signs of GI bleeding if coadministration is necessary."
+  },
+  {
+    "_id": "di_2",
+    "drug_a": "Atorvastatin",
+    "drug_b": "Azithromycin",
+    "severity": "moderate",
+    "description": "Azithromycin may increase Atorvastatin levels, increasing the risk of myopathy or rhabdomyolysis.",
+    "recommendation": "Monitor for muscle pain/weakness. Consider temporarily suspending statin or using a lower dose."
+  },
+  {
+    "_id": "di_3",
+    "drug_a": "Ibuprofen",
+    "drug_b": "Paracetamol",
+    "severity": "mild",
+    "description": "Generally safe, but concurrent use of multiple NSAIDs/analgesics should be monitored for hepatic or renal load.",
+    "recommendation": "Can be used together for severe pain, but stay within maximum daily limits for each."
+  }
+]

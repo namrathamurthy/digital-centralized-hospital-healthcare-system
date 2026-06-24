@@ -6,8 +6,11 @@ import { useSocket } from '../../context/SocketContext';
 import axios from 'axios';
 import { 
   Stethoscope, Users, CheckCircle, Ban, Play, ChevronRight, 
-  Plus, Trash2, ShieldAlert, Sparkles, FileSpreadsheet, ClipboardList, RefreshCw
+  Plus, Trash2, ShieldAlert, Sparkles, FileSpreadsheet, ClipboardList, RefreshCw, Star
 } from 'lucide-react';
+import WearableVitalsSidebar from '../../components/WearableVitalsSidebar';
+import ReviewList from '../../components/ReviewList';
+import VoiceRecorder from '../../components/VoiceRecorder';
 
 export default function DoctorDashboard() {
   const { user } = useAuth();
@@ -17,6 +20,7 @@ export default function DoctorDashboard() {
 
   // Queue state
   const [appointments, setAppointments] = useState([]);
+  const [readyForDischarge, setReadyForDischarge] = useState([]);
   const [doctor, setDoctor] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -32,12 +36,19 @@ export default function DoctorDashboard() {
   const [labReports, setLabReports] = useState([]);
   const [prescriptionFile, setPrescriptionFile] = useState(null);
   const [labTestFile, setLabTestFile] = useState(null);
+  
+  const [icd10Code, setIcd10Code] = useState('');
+  const [generalInstructions, setGeneralInstructions] = useState('');
+  const [followUp, setFollowUp] = useState('');
+  const [voiceTranscript, setVoiceTranscript] = useState('');
+  const [allergyConflicts, setAllergyConflicts] = useState([]);
 
   const [actionLoading, setActionLoading] = useState(false);
 
   // Audit logs state
   const [auditLogs, setAuditLogs] = useState([]);
   const [auditLoading, setAuditLoading] = useState(false);
+  const [ratings, setRatings] = useState({ summary: null, reviews: [] });
 
   const fetchQueue = async () => {
     try {
@@ -49,6 +60,10 @@ export default function DoctorDashboard() {
       const labRes = await axios.get('/api/lab/requests');
       if (labRes.data.success) {
         setLabReports(labRes.data.requests);
+      }
+      const finalizeRes = await axios.get('/api/doctor/ready-for-discharge');
+      if (finalizeRes.data.success) {
+        setReadyForDischarge(finalizeRes.data.appointments);
       }
     } catch (err) {
       console.error('Error fetching doctor queue:', err);
@@ -69,13 +84,44 @@ export default function DoctorDashboard() {
     }
   };
 
+  const fetchRatings = async () => {
+    if (!doctor?._id) return;
+    try {
+      const res = await axios.get(`/api/doctors/${doctor._id}/ratings`);
+      if (res.data.success) {
+        setRatings({ summary: res.data.summary, reviews: res.data.reviews });
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
     fetchQueue();
   }, []);
 
   useEffect(() => {
     if (activeTab === 'audit') fetchAuditLogs();
-  }, [activeTab]);
+    if (activeTab === 'ratings') fetchRatings();
+  }, [activeTab, doctor]);
+
+  const handleVoiceExtraction = (extractedData) => {
+    if (extractedData.diagnosis) setDiagnosis(extractedData.diagnosis);
+    if (extractedData.icd10) setIcd10Code(extractedData.icd10);
+    if (extractedData.generalInstructions) setGeneralInstructions(extractedData.generalInstructions);
+    if (extractedData.followUp) setFollowUp(extractedData.followUp);
+    if (extractedData.rawTranscript) setVoiceTranscript(extractedData.rawTranscript);
+    
+    if (extractedData.drugs && extractedData.drugs.length > 0) {
+      setMeds(extractedData.drugs);
+      const conflicts = extractedData.drugs.filter(d => d.allergyConflict);
+      if (conflicts.length > 0) {
+        setAllergyConflicts(conflicts);
+        // We will show a banner, but an alert is good for immediate attention
+        alert(`WARNING: AI detected ${conflicts.length} potential drug interactions or allergies. Please review medications carefully!`);
+      }
+    }
+  };
 
   // Listen for real-time queue changes
   useEffect(() => {
@@ -173,6 +219,10 @@ export default function DoctorDashboard() {
       const res = await axios.post('/api/doctor/complete-current', {
         appointmentId: apptId,
         diagnosis,
+        icd10Code,
+        generalInstructions,
+        followUp,
+        voiceTranscript,
         medications: finalMeds,
         labTests: finalLabTests,
         prescriptionFile: prescriptionFileData,
@@ -186,6 +236,11 @@ export default function DoctorDashboard() {
         setNewLabTest('');
         setPrescriptionFile(null);
         setLabTestFile(null);
+        setIcd10Code('');
+        setGeneralInstructions('');
+        setFollowUp('');
+        setVoiceTranscript('');
+        setAllergyConflicts([]);
         fetchQueue();
       }
     } catch (err) {
@@ -206,6 +261,40 @@ export default function DoctorDashboard() {
     } catch (err) {
       console.error(err);
       alert('Failed to cancel appointment.');
+    }
+  };
+
+  const handleRecallPatient = async (report) => {
+    if (!confirm(`Recall ${report.patientName} for prescription/consultation?`)) return;
+    try {
+      const res = await axios.post('/api/doctor/recall', {
+        patientId: report.patientId,
+        patientName: report.patientName,
+        doctorId: doctor._id,
+        testType: report.testType
+      });
+      if (res.data.success) {
+        alert(`${report.patientName} has been successfully recalled to your queue.`);
+        fetchQueue();
+        setActiveTab('queue');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Failed to recall patient.');
+    }
+  };
+
+  const handleDischargePatient = async (apptId) => {
+    if (!confirm('Officially finish this consultation? This will schedule any automated reminders.')) return;
+    try {
+      const res = await axios.post(`/api/doctor/discharge/${apptId}`);
+      if (res.data.success) {
+        alert('Patient consultation finalized and AI reminders scheduled!');
+        fetchQueue();
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Failed to finalize patient consultation.');
     }
   };
 
@@ -252,7 +341,7 @@ export default function DoctorDashboard() {
         </div>
 
         {/* Tab Bar */}
-        <div className="flex gap-2 bg-white p-1 border border-slate-200 rounded-xl w-fit mb-6">
+        <div className="flex gap-2 bg-white p-1 border border-slate-200 rounded-xl w-fit mb-6 overflow-x-auto">
           <button
             onClick={() => setActiveTab('queue')}
             className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
@@ -272,6 +361,15 @@ export default function DoctorDashboard() {
             Completed Lab Reports
           </button>
           <button
+            onClick={() => setActiveTab('finalize')}
+            className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+              activeTab === 'finalize' ? 'bg-blue-600 text-white shadow-md' : 'text-slate-600 hover:text-slate-800'
+            }`}
+          >
+            <CheckCircle className="inline mr-1" size={13} />
+            Finalize Consultations
+          </button>
+          <button
             onClick={() => setActiveTab('audit')}
             className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               activeTab === 'audit' ? 'bg-blue-600 text-white shadow-md' : 'text-slate-600 hover:text-slate-800'
@@ -279,6 +377,15 @@ export default function DoctorDashboard() {
           >
             <ClipboardList className="inline mr-1" size={13} />
             My Activity Logs
+          </button>
+          <button
+            onClick={() => setActiveTab('ratings')}
+            className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+              activeTab === 'ratings' ? 'bg-blue-600 text-white shadow-md' : 'text-slate-600 hover:text-slate-800'
+            }`}
+          >
+            <Star className="inline mr-1" size={13} />
+            My Ratings
           </button>
         </div>
 
@@ -306,6 +413,10 @@ export default function DoctorDashboard() {
                       <span className="text-[9px] text-slate-500 uppercase font-bold">Currently Consulting</span>
                       <p className="text-lg font-bold text-slate-800 mt-1">{activeAppt.patientName}</p>
                       
+                      <div className="mt-4">
+                        <WearableVitalsSidebar patientId={activeAppt.patientId} />
+                      </div>
+                      
                       <div className="grid grid-cols-2 gap-4 mt-3 text-xs">
                         <div>
                           <span className="text-slate-500 font-medium">Token Number:</span>
@@ -327,6 +438,27 @@ export default function DoctorDashboard() {
                         {activeAppt.triageData?.symptoms || 'N/A'}
                       </div>
                     </div>
+
+                    {/* AI Voice Prescription */}
+                    <VoiceRecorder 
+                      patientId={activeAppt.patientId} 
+                      onExtractionComplete={handleVoiceExtraction} 
+                    />
+
+                    {/* Allergy / Interaction Alerts */}
+                    {allergyConflicts.length > 0 && (
+                      <div className="bg-red-50 border border-red-200 p-4 rounded-xl mb-6 space-y-2">
+                        <div className="flex items-center gap-2 text-red-700 font-bold">
+                          <ShieldAlert size={18} />
+                          <span>AI Clinical Warning: Drug Interactions / Allergies Detected</span>
+                        </div>
+                        <ul className="list-disc pl-6 space-y-1 text-sm text-red-600">
+                          {allergyConflicts.map((c, i) => (
+                            <li key={i}><strong>{c.name}:</strong> {c.conflictReason}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
 
                     {/* Treatment form */}
                     <div className="space-y-4">
@@ -683,6 +815,48 @@ export default function DoctorDashboard() {
                         Download Attached Report
                       </a>
                     )}
+                    <button
+                      onClick={() => handleRecallPatient(report)}
+                      className="py-2 mt-1 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-lg text-xs cursor-pointer flex items-center justify-center transition-all active:scale-95 shadow-md shadow-purple-500/20"
+                    >
+                      <Plus size={14} className="mr-1.5" />
+                      Recall Patient for Prescription
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Tab: Finalize Consultations */}
+        {activeTab === 'finalize' && (
+          <div className="border border-slate-200 bg-white/80 rounded-2xl p-6 glass-panel">
+            <h3 className="text-xl font-bold text-slate-800 mb-6">Ready for Discharge</h3>
+            <p className="text-xs text-slate-500 mb-6">These patients have completed their pharmacy and billing steps. Click Finish Consultation to officially close their visit and schedule automated AI follow-ups.</p>
+            {readyForDischarge.length === 0 ? (
+              <p className="text-slate-500 text-xs py-8 text-center bg-slate-50 border border-slate-200 rounded-xl">
+                No patients ready for discharge.
+              </p>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {readyForDischarge.map((appt) => (
+                  <div key={appt._id} className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col gap-3">
+                    <div>
+                      <span className="text-[10px] text-green-600 font-mono font-bold uppercase">Pharmacy & Billing Completed</span>
+                      <p className="text-sm font-bold text-slate-800 mt-0.5">Patient: {appt.patientName}</p>
+                    </div>
+                    <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs leading-relaxed text-slate-600">
+                      <span className="text-slate-500 block font-bold mb-0.5">Triage Symptoms:</span>
+                      {appt.triageData?.symptoms || 'N/A'}
+                    </div>
+                    <button
+                      onClick={() => handleDischargePatient(appt._id)}
+                      className="py-2 mt-1 bg-green-600 hover:bg-green-500 text-white font-bold rounded-lg text-xs cursor-pointer flex items-center justify-center transition-all active:scale-95 shadow-md shadow-green-500/20"
+                    >
+                      <CheckCircle size={14} className="mr-1.5" />
+                      Finish Consultation
+                    </button>
                   </div>
                 ))}
               </div>
@@ -734,6 +908,66 @@ export default function DoctorDashboard() {
             )}
           </div>
         )}
+
+        {/* Tab 4: My Ratings */}
+        {activeTab === 'ratings' && (
+          <div className="space-y-6">
+            {ratings.summary && (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="md:col-span-1 border border-slate-200 bg-white/80 rounded-2xl p-6 glass-panel flex flex-col justify-center items-center text-center">
+                  <div className="text-4xl font-extrabold text-amber-500 mb-1 flex items-center justify-center gap-2">
+                    {ratings.summary.avg_overall > 0 ? ratings.summary.avg_overall : 'N/A'} <Star className="fill-amber-500" size={32} />
+                  </div>
+                  <div className="text-xs text-slate-500 font-bold uppercase tracking-wider">{ratings.summary.total_reviews} Total Reviews</div>
+                </div>
+                <div className="md:col-span-2 border border-slate-200 bg-white/80 rounded-2xl p-6 glass-panel grid grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-1">
+                    <span className="text-[10px] text-slate-500 uppercase font-bold">Communication</span>
+                    <div className="flex items-center gap-2">
+                      <div className="flex-1 bg-slate-100 h-2 rounded-full overflow-hidden">
+                        <div className="bg-amber-400 h-full rounded-full" style={{ width: `${(ratings.summary.avg_comm / 5) * 100}%` }}></div>
+                      </div>
+                      <span className="text-xs font-bold text-slate-700">{ratings.summary.avg_comm > 0 ? ratings.summary.avg_comm : '-'}</span>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-[10px] text-slate-500 uppercase font-bold">Wait Time</span>
+                    <div className="flex items-center gap-2">
+                      <div className="flex-1 bg-slate-100 h-2 rounded-full overflow-hidden">
+                        <div className="bg-amber-400 h-full rounded-full" style={{ width: `${(ratings.summary.avg_wait / 5) * 100}%` }}></div>
+                      </div>
+                      <span className="text-xs font-bold text-slate-700">{ratings.summary.avg_wait > 0 ? ratings.summary.avg_wait : '-'}</span>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-[10px] text-slate-500 uppercase font-bold">Diagnosis</span>
+                    <div className="flex items-center gap-2">
+                      <div className="flex-1 bg-slate-100 h-2 rounded-full overflow-hidden">
+                        <div className="bg-amber-400 h-full rounded-full" style={{ width: `${(ratings.summary.avg_diagnosis / 5) * 100}%` }}></div>
+                      </div>
+                      <span className="text-xs font-bold text-slate-700">{ratings.summary.avg_diagnosis > 0 ? ratings.summary.avg_diagnosis : '-'}</span>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-[10px] text-slate-500 uppercase font-bold">Bedside Manner</span>
+                    <div className="flex items-center gap-2">
+                      <div className="flex-1 bg-slate-100 h-2 rounded-full overflow-hidden">
+                        <div className="bg-amber-400 h-full rounded-full" style={{ width: `${(ratings.summary.avg_bedside / 5) * 100}%` }}></div>
+                      </div>
+                      <span className="text-xs font-bold text-slate-700">{ratings.summary.avg_bedside > 0 ? ratings.summary.avg_bedside : '-'}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+            
+            <div className="border border-slate-200 bg-slate-50 rounded-2xl p-6">
+              <h2 className="text-xl font-bold text-slate-800 mb-4">Recent Patient Reviews</h2>
+              <ReviewList reviews={ratings.reviews} />
+            </div>
+          </div>
+        )}
+
       </div>
     </ProtectedRoute>
   );

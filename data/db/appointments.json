@@ -359,5 +359,290 @@
     },
     "status": "completed",
     "priority": 0
+  },
+  {
+    "_id": "drbi8n5qvmqotkyta",
+    "createdAt": "2026-06-22T06:13:46.174Z",
+    "updatedAt": "2026-06-22T06:16:19.673Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "mockdoc3",
+    "doctorName": "Dr. Ramana Rao",
+    "tokenNumber": 1,
+    "date": "2026-06-22",
+    "timeSlot": "10:00 AM - 10:30 AM",
+    "triageData": {
+      "symptoms": "I have  more chest pain",
+      "severity": "Emergency",
+      "aiAdvice": "CRITICAL WARNING: Possible cardiac episode. Go to the nearest Emergency Room immediately or dial emergency services. Do not drive yourself."
+    },
+    "status": "completed",
+    "priority": 0
+  },
+  {
+    "_id": "lifmn5bvvmqoui354",
+    "createdAt": "2026-06-22T06:39:31.432Z",
+    "updatedAt": "2026-06-22T06:40:45.730Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "mockdoc3",
+    "doctorName": "Dr. Ramana Rao",
+    "tokenNumber": 2,
+    "date": "2026-06-22",
+    "timeSlot": "09:00 AM - 09:30 AM",
+    "triageData": {
+      "symptoms": "chest pain",
+      "severity": "Emergency",
+      "aiAdvice": "CRITICAL WARNING: Possible cardiac episode. Go to the nearest Emergency Room immediately or dial emergency services. Do not drive yourself."
+    },
+    "status": "completed",
+    "priority": 0
+  },
+  {
+    "_id": "5avp5pl29mqov3bcy",
+    "createdAt": "2026-06-22T06:56:01.858Z",
+    "updatedAt": "2026-06-22T06:59:57.726Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 1,
+    "date": "2026-06-22",
+    "timeSlot": "09:00 AM - 09:30 AM",
+    "triageData": {
+      "symptoms": "throat infection",
+      "severity": "Low",
+      "aiAdvice": "Symptoms appear mild. Please rest, drink plenty of water, and schedule a routine checkup with a General Physician if symptoms persist."
+    },
+    "status": "completed",
+    "priority": 0
+  },
+  {
+    "_id": "ih0i92umhmqov8wev",
+    "createdAt": "2026-06-22T07:00:22.423Z",
+    "updatedAt": "2026-06-22T07:21:22.152Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 2,
+    "date": "2026-06-22",
+    "timeSlot": "Lab Review",
+    "triageData": {
+      "symptoms": "Post-Lab Review for ECG / Electrocardiogram",
+      "severity": "High",
+      "aiAdvice": "Doctor initiated recall after reviewing laboratory findings."
+    },
+    "status": "discharged",
+    "priority": 1
+  },
+  {
+    "_id": "m2oz52f1ymqovu79l",
+    "createdAt": "2026-06-22T07:16:56.265Z",
+    "updatedAt": "2026-06-22T13:23:05.971Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 3,
+    "date": "2026-06-22",
+    "timeSlot": "09:00 AM - 09:30 AM",
+    "triageData": {
+      "symptoms": "fever",
+      "severity": "Low",
+      "aiAdvice": "Standard flu-like symptoms. Take paracetamol as needed, rest, stay hydrated. Visit general practitioner if fever exceeds 102°F."
+    },
+    "status": "discharged",
+    "priority": 0
+  },
+  {
+    "_id": "ko5lefs9umqp0hbj6",
+    "createdAt": "2026-06-22T09:26:53.346Z",
+    "updatedAt": "2026-06-22T13:22:32.696Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "mockdoc3",
+    "doctorName": "Dr. Ramana Rao",
+    "tokenNumber": 3,
+    "date": "2026-06-22",
+    "timeSlot": "09:00 AM - 09:30 AM",
+    "triageData": {
+      "symptoms": "chest pain",
+      "severity": "Emergency",
+      "aiAdvice": "CRITICAL WARNING: Possible cardiac episode. Go to the nearest Emergency Room immediately or dial emergency services. Do not drive yourself."
+    },
+    "status": "completed",
+    "priority": 0
+  },
+  {
+    "_id": "ba4syfpkkmqp8vep0",
+    "createdAt": "2026-06-22T13:21:47.556Z",
+    "updatedAt": "2026-06-22T13:21:47.556Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "mockdoc3",
+    "doctorName": "Dr. Ramana Rao",
+    "tokenNumber": 4,
+    "date": "2026-06-22",
+    "timeSlot": "09:00 AM - 09:30 AM",
+    "triageData": {
+      "symptoms": "chest pain",
+      "severity": "Emergency",
+      "aiAdvice": "CRITICAL WARNING: Possible cardiac episode. Go to the nearest Emergency Room immediately or dial emergency services. Do not drive yourself."
+    },
+    "status": "waiting",
+    "priority": 0
+  },
+  {
+    "_id": "jlj5cd30lmqqjbjzu",
+    "createdAt": "2026-06-23T11:02:03.258Z",
+    "updatedAt": "2026-06-23T11:03:40.164Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 1,
+    "date": "2026-06-23",
+    "timeSlot": "09:00 AM - 09:30 AM",
+    "triageData": {
+      "symptoms": "fever",
+      "severity": "Low",
+      "aiAdvice": "Standard flu-like symptoms. Take paracetamol as needed, rest, stay hydrated. Visit general practitioner if fever exceeds 102°F."
+    },
+    "status": "discharged",
+    "priority": 0
+  },
+  {
+    "_id": "8dlo2fjvrmqqjmd5o",
+    "createdAt": "2026-06-23T11:10:27.612Z",
+    "updatedAt": "2026-06-23T11:11:57.412Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 2,
+    "date": "2026-06-23",
+    "timeSlot": "09:00 AM - 09:30 AM",
+    "triageData": {
+      "symptoms": "fever",
+      "severity": "Low",
+      "aiAdvice": "Standard flu-like symptoms. Take paracetamol as needed, rest, stay hydrated. Visit general practitioner if fever exceeds 102°F."
+    },
+    "status": "discharged",
+    "priority": 0
+  },
+  {
+    "_id": "tkmbs4ctwmqqluohe",
+    "createdAt": "2026-06-23T12:12:54.770Z",
+    "updatedAt": "2026-06-23T13:40:30.662Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 3,
+    "date": "2026-06-23",
+    "timeSlot": "09:00 AM - 09:30 AM",
+    "triageData": {
+      "symptoms": "fever",
+      "severity": "Low",
+      "aiAdvice": "Standard flu-like symptoms. Take paracetamol as needed, rest, stay hydrated. Visit general practitioner if fever exceeds 102°F."
+    },
+    "status": "discharged",
+    "priority": 0
+  },
+  {
+    "_id": "u2a8sdpu5mqqomjj8",
+    "createdAt": "2026-06-23T13:30:33.956Z",
+    "updatedAt": "2026-06-23T13:40:10.729Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 4,
+    "date": "2026-06-23",
+    "timeSlot": "10:00 AM - 10:30 AM",
+    "triageData": {
+      "symptoms": "fever",
+      "severity": "Low",
+      "aiAdvice": "Standard flu-like symptoms. Take paracetamol as needed, rest, stay hydrated. Visit general practitioner if fever exceeds 102°F."
+    },
+    "status": "completed",
+    "priority": 0
+  },
+  {
+    "_id": "brjgvtornmqqotb8l",
+    "createdAt": "2026-06-23T13:35:49.797Z",
+    "updatedAt": "2026-06-23T13:35:49.797Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 5,
+    "date": "2026-06-23",
+    "timeSlot": "09:00 AM - 09:30 AM",
+    "triageData": {
+      "symptoms": "fever",
+      "severity": "Low",
+      "aiAdvice": "Standard flu-like symptoms. Take paracetamol as needed, rest, stay hydrated. Visit general practitioner if fever exceeds 102°F."
+    },
+    "status": "waiting",
+    "priority": 0
+  },
+  {
+    "_id": "sz7upfqw0mqrq2smn",
+    "createdAt": "2026-06-24T06:58:58.031Z",
+    "updatedAt": "2026-06-24T07:41:02.481Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 1,
+    "date": "2026-06-24",
+    "timeSlot": "09:00 AM - 09:30 AM",
+    "triageData": {
+      "symptoms": "fever",
+      "severity": "Low",
+      "aiAdvice": "Standard flu-like symptoms. Take paracetamol as needed, rest, stay hydrated. Visit general practitioner if fever exceeds 102°F."
+    },
+    "status": "cancelled",
+    "priority": 0
+  },
+  {
+    "_id": "40r0p4104mqrrngtf",
+    "createdAt": "2026-06-24T07:43:02.115Z",
+    "updatedAt": "2026-06-24T09:18:28.560Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 2,
+    "date": "2026-06-24",
+    "timeSlot": "09:00 AM - 09:30 AM",
+    "triageData": {
+      "symptoms": "fever",
+      "severity": "Low",
+      "aiAdvice": "Standard flu-like symptoms. Take paracetamol as needed, rest, stay hydrated. Visit general practitioner if fever exceeds 102°F."
+    },
+    "status": "completed",
+    "priority": 0
+  },
+  {
+    "_id": "2g72rz0xzmqryd8h7",
+    "createdAt": "2026-06-24T10:51:02.059Z",
+    "updatedAt": "2026-06-24T10:51:12.778Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 3,
+    "date": "2026-06-24",
+    "timeSlot": "09:00 AM - 09:30 AM",
+    "triageData": {
+      "symptoms": "fever",
+      "severity": "Low",
+      "aiAdvice": "Standard flu-like symptoms. Take paracetamol as needed, rest, stay hydrated. Visit general practitioner if fever exceeds 102°F."
+    },
+    "status": "calling",
+    "priority": 0
   }
 ]

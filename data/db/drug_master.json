@@ -1,0 +1,66 @@
+[
+  {
+    "_id": "dm_1",
+    "generic_name": "Amoxicillin",
+    "drug_class": "penicillin",
+    "forms": ["Tablet", "Capsule", "Syrup"],
+    "strengths": ["250mg", "500mg"],
+    "schedule": "H"
+  },
+  {
+    "_id": "dm_2",
+    "generic_name": "Paracetamol",
+    "drug_class": "nsaid",
+    "forms": ["Tablet", "Syrup", "IV"],
+    "strengths": ["500mg", "650mg"],
+    "schedule": "OTC"
+  },
+  {
+    "_id": "dm_3",
+    "generic_name": "Ibuprofen",
+    "drug_class": "nsaid",
+    "forms": ["Tablet", "Syrup"],
+    "strengths": ["200mg", "400mg"],
+    "schedule": "OTC"
+  },
+  {
+    "_id": "dm_4",
+    "generic_name": "Metformin",
+    "drug_class": "biguanide",
+    "forms": ["Tablet"],
+    "strengths": ["500mg", "850mg", "1000mg"],
+    "schedule": "H"
+  },
+  {
+    "_id": "dm_5",
+    "generic_name": "Atorvastatin",
+    "drug_class": "statin",
+    "forms": ["Tablet"],
+    "strengths": ["10mg", "20mg", "40mg"],
+    "schedule": "H"
+  },
+  {
+    "_id": "dm_6",
+    "generic_name": "Azithromycin",
+    "drug_class": "macrolide",
+    "forms": ["Tablet", "Syrup"],
+    "strengths": ["250mg", "500mg"],
+    "schedule": "H1"
+  },
+  {
+    "_id": "dm_7",
+    "generic_name": "Omeprazole",
+    "drug_class": "ppi",
+    "forms": ["Capsule"],
+    "strengths": ["20mg", "40mg"],
+    "schedule": "H"
+  },
+  {
+    "_id": "dm_8",
+    "generic_name": "Clopidogrel",
+    "drug_class": "antiplatelet",
+    "forms": ["Tablet"],
+    "strengths": ["75mg"],
+    "schedule": "H"
+  }
+]
