@@ -70,5 +70,11 @@
     "createdAt": "2026-06-24T06:58:58.030Z",
     "updatedAt": "2026-06-24T10:51:02.058Z",
     "seq": 3
+  },
+  {
+    "_id": "doctor_vpzc8ilaemq9arisb_2026-06-26",
+    "createdAt": "2026-06-26T10:29:24.217Z",
+    "updatedAt": "2026-06-26T10:29:24.221Z",
+    "seq": 1
   }
 ]

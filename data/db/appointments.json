@@ -644,5 +644,24 @@
     },
     "status": "calling",
     "priority": 0
+  },
+  {
+    "_id": "uvp4nxutemqush4e7",
+    "createdAt": "2026-06-26T10:29:24.223Z",
+    "updatedAt": "2026-06-26T10:29:24.223Z",
+    "patientId": "sinb68cramq9aris4",
+    "patientName": "John Doe (Patient)",
+    "doctorId": "vpzc8ilaemq9arisb",
+    "doctorName": "Dr. Robert Chen",
+    "tokenNumber": 1,
+    "date": "2026-06-26",
+    "timeSlot": "09:00 AM - 09:30 AM",
+    "triageData": {
+      "symptoms": "fever",
+      "severity": "Low",
+      "aiAdvice": "Standard flu-like symptoms. Take paracetamol as needed, rest, stay hydrated. Visit general practitioner if fever exceeds 102°F."
+    },
+    "status": "waiting",
+    "priority": 0
   }
 ]

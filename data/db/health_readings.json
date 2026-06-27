@@ -526,5 +526,101 @@
     "unit": "count",
     "recorded_at": "2026-06-23T10:14:06.134Z",
     "synced_at": "2026-06-23T10:14:06.236Z"
+  },
+  {
+    "_id": "bu0z3ijezmqs0fc6g",
+    "createdAt": "2026-06-24T11:48:39.400Z",
+    "updatedAt": "2026-06-24T11:48:39.400Z",
+    "patient_id": "sinb68cramq9aris4",
+    "source": "Manual Entry",
+    "metric": "heart_rate",
+    "value": 90,
+    "unit": "bpm",
+    "recorded_at": "2026-06-24T11:48:39.180Z",
+    "synced_at": "2026-06-24T11:48:39.399Z"
+  },
+  {
+    "_id": "mdjnrgw4gmqs0fc6h",
+    "createdAt": "2026-06-24T11:48:39.401Z",
+    "updatedAt": "2026-06-24T11:48:39.401Z",
+    "patient_id": "sinb68cramq9aris4",
+    "source": "Manual Entry",
+    "metric": "spo2",
+    "value": 80,
+    "unit": "%",
+    "recorded_at": "2026-06-24T11:48:39.180Z",
+    "synced_at": "2026-06-24T11:48:39.400Z"
+  },
+  {
+    "_id": "s327b1ftwmqs0fc6i",
+    "createdAt": "2026-06-24T11:48:39.402Z",
+    "updatedAt": "2026-06-24T11:48:39.402Z",
+    "patient_id": "sinb68cramq9aris4",
+    "source": "Manual Entry",
+    "metric": "sleep_hours",
+    "value": 9,
+    "unit": "hours",
+    "recorded_at": "2026-06-24T11:48:39.180Z",
+    "synced_at": "2026-06-24T11:48:39.402Z"
+  },
+  {
+    "_id": "83xs7ksmomqs0fc6k",
+    "createdAt": "2026-06-24T11:48:39.404Z",
+    "updatedAt": "2026-06-24T11:48:39.404Z",
+    "patient_id": "sinb68cramq9aris4",
+    "source": "Manual Entry",
+    "metric": "steps",
+    "value": 6000,
+    "unit": "count",
+    "recorded_at": "2026-06-24T11:48:39.180Z",
+    "synced_at": "2026-06-24T11:48:39.404Z"
+  },
+  {
+    "_id": "wxz04fi95mqushynk",
+    "createdAt": "2026-06-26T10:30:03.440Z",
+    "updatedAt": "2026-06-26T10:30:03.440Z",
+    "patient_id": "sinb68cramq9aris4",
+    "source": "Manual Entry",
+    "metric": "heart_rate",
+    "value": 80,
+    "unit": "bpm",
+    "recorded_at": "2026-06-26T10:30:03.396Z",
+    "synced_at": "2026-06-26T10:30:03.440Z"
+  },
+  {
+    "_id": "xwq4a0dg6mqushynm",
+    "createdAt": "2026-06-26T10:30:03.442Z",
+    "updatedAt": "2026-06-26T10:30:03.442Z",
+    "patient_id": "sinb68cramq9aris4",
+    "source": "Manual Entry",
+    "metric": "spo2",
+    "value": 94,
+    "unit": "%",
+    "recorded_at": "2026-06-26T10:30:03.396Z",
+    "synced_at": "2026-06-26T10:30:03.441Z"
+  },
+  {
+    "_id": "j546m6a50mqushynn",
+    "createdAt": "2026-06-26T10:30:03.443Z",
+    "updatedAt": "2026-06-26T10:30:03.443Z",
+    "patient_id": "sinb68cramq9aris4",
+    "source": "Manual Entry",
+    "metric": "sleep_hours",
+    "value": 8,
+    "unit": "hours",
+    "recorded_at": "2026-06-26T10:30:03.396Z",
+    "synced_at": "2026-06-26T10:30:03.443Z"
+  },
+  {
+    "_id": "6lil93zqnmqushyno",
+    "createdAt": "2026-06-26T10:30:03.444Z",
+    "updatedAt": "2026-06-26T10:30:03.444Z",
+    "patient_id": "sinb68cramq9aris4",
+    "source": "Manual Entry",
+    "metric": "steps",
+    "value": 8000,
+    "unit": "count",
+    "recorded_at": "2026-06-26T10:30:03.396Z",
+    "synced_at": "2026-06-26T10:30:03.443Z"
   }
 ]
