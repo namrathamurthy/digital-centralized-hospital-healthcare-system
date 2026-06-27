@@ -32,20 +32,7 @@ export default function Login() {
     }
   };
 
-  const handleQuickLogin = (demoEmail) => {
-    setEmail(demoEmail);
-    setPassword('password123');
-    setError('');
-  };
 
-  const demoAccounts = [
-    { label: 'Patient', email: 'patient@smartcare.com' },
-    { label: 'Doctor', email: 'doctor@smartcare.com' },
-    { label: 'Reception', email: 'receptionist@smartcare.com' },
-    { label: 'Billing', email: 'billing@smartcare.com' },
-    { label: 'Lab Tech', email: 'lab@smartcare.com' },
-    { label: 'Pharmacy', email: 'pharmacy@smartcare.com' }
-  ];
 
   return (
     <div className="flex flex-col flex-1 items-center justify-center py-12 px-6 font-sans">
@@ -118,25 +105,7 @@ export default function Login() {
           </Link>
         </p>
 
-        {/* Quick Demo Logins Section */}
-        <div className="mt-8 pt-6 border-t border-slate-100 relative z-10">
-          <div className="flex items-center gap-1.5 text-blue-600 text-xs font-bold uppercase tracking-wider mb-3">
-            <Sparkles size={12} />
-            Quick Demo Logins
-          </div>
-          <div className="grid grid-cols-3 gap-2">
-            {demoAccounts.map((item, idx) => (
-              <button
-                key={idx}
-                type="button"
-                onClick={() => handleQuickLogin(item.email)}
-                className="py-1.5 rounded bg-white border border-slate-200 text-[10px] font-bold text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-all cursor-pointer active:scale-95 shadow-sm"
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-        </div>
+
       </div>
     </div>
   );
