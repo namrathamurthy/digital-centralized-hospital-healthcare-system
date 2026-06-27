@@ -1,5 +1,7 @@
 # SmartCare Healthcare Management Platform
 
+🚀 **Live Production Link:** [https://digital-centralized-hospital-healthcare.onrender.com](https://digital-centralized-hospital-healthcare.onrender.com)
+
 SmartCare is a comprehensive, fully integrated Next.js hospital suite designed to streamline medical operations, enhance patient care, and coordinate seamlessly across various clinical departments.
 
 ## Features
