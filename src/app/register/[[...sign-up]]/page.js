@@ -32,7 +32,7 @@ export default function Register() {
           </select>
         </div>
 
-        <SignUp fallbackRedirectUrl={`/${role}-dashboard`} signInUrl="/login" />
+        <SignUp fallbackRedirectUrl="/auth-redirect" signInUrl="/login" />
       </div>
     </div>
   );
