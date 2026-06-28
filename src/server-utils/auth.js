@@ -1,53 +1,33 @@
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+const { getAuth } = require('@clerk/nextjs/server');
+const fs = require('fs');
+const path = require('path');
 
-const JWT_SECRET = process.env.JWT_SECRET || 'supersecretkeyforhospitalqueuesystem';
-
-async function hashPassword(password) {
-  return await bcrypt.hash(password, 10);
-}
-
-async function comparePassword(password, hash) {
-  return await bcrypt.compare(password, hash);
-}
-
-function generateToken(user) {
-  return jwt.sign(
-    { _id: user._id, name: user.name, email: user.email, role: user.role },
-    JWT_SECRET,
-    { expiresIn: '7d' }
-  );
-}
-
-function verifyToken(token) {
+async function verifySession(req) {
   try {
-    return jwt.verify(token, JWT_SECRET);
+    const { userId } = getAuth(req);
+    if (!userId) return null;
+
+    const usersPath = path.join(process.cwd(), 'data', 'db', 'users.json');
+    if (!fs.existsSync(usersPath)) return null;
+
+    const fileData = fs.readFileSync(usersPath, 'utf8');
+    if (!fileData) return null;
+    
+    const users = JSON.parse(fileData);
+    const user = users.find(u => u.clerkId === userId);
+    
+    return user || null;
   } catch (err) {
+    console.error("Clerk auth error in verifySession:", err);
     return null;
   }
 }
 
-async function verifySession(req) {
-  let token = null;
-
-  // Extract from authorization header
-  const authHeader = req.headers.get('authorization');
-  if (authHeader && authHeader.startsWith('Bearer ')) {
-    token = authHeader.split(' ')[1];
-  } else {
-    // Extract from cookies
-    const cookieHeader = req.headers.get('cookie');
-    if (cookieHeader) {
-      const match = cookieHeader.match(/token=([^;]+)/);
-      if (match) {
-        token = match[1];
-      }
-    }
-  }
-
-  if (!token) return null;
-  return verifyToken(token);
-}
+// Stub old functions to prevent crashes if other files still import them temporarily
+function hashPassword() { return ''; }
+function comparePassword() { return false; }
+function generateToken() { return ''; }
+function verifyToken() { return null; }
 
 module.exports = {
   hashPassword,

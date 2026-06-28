@@ -4,6 +4,7 @@ import { AuthProvider } from '../context/AuthContext';
 import { SocketProvider } from '../context/SocketContext';
 import AppWrapper from '../components/AppWrapper';
 import Navbar from '../components/Navbar';
+import { ClerkProvider } from '@clerk/nextjs';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,22 +23,24 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col bg-[#F8FAFC] text-slate-800 selection:bg-blue-500/20 selection:text-blue-700">
-        <AuthProvider>
-          <SocketProvider>
-            <AppWrapper>
-              <Navbar />
-              <main className="flex flex-col flex-1">
-                {children}
-              </main>
-            </AppWrapper>
-          </SocketProvider>
-        </AuthProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html
+        lang="en"
+        className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      >
+        <body className="min-h-full flex flex-col bg-[#F8FAFC] text-slate-800 selection:bg-blue-500/20 selection:text-blue-700">
+          <AuthProvider>
+            <SocketProvider>
+              <AppWrapper>
+                <Navbar />
+                <main className="flex flex-col flex-1">
+                  {children}
+                </main>
+              </AppWrapper>
+            </SocketProvider>
+          </AuthProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

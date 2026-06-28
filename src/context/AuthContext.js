@@ -1,66 +1,61 @@
 'use client';
 import { createContext, useContext, useState, useEffect } from 'react';
+import { useUser, useClerk } from '@clerk/nextjs';
 import axios from 'axios';
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
+  const { isLoaded, isSignedIn, user: clerkUser } = useUser();
+  const { signOut } = useClerk();
+  
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const checkUserSession = async () => {
-    try {
-      const res = await axios.get('/api/auth/me');
-      if (res.data.success) {
-        setUser(res.data.user);
-      } else {
+  const syncUserSession = async () => {
+    if (!isLoaded) return;
+    
+    if (isSignedIn && clerkUser) {
+      try {
+        const payload = {
+          clerkId: clerkUser.id,
+          email: clerkUser.primaryEmailAddress?.emailAddress,
+          name: clerkUser.fullName || 'New User',
+        };
+        const res = await axios.post('/api/auth/sync', payload);
+        if (res.data.success) {
+          setUser(res.data.user);
+        } else {
+          setUser(null);
+        }
+      } catch (err) {
+        console.error("Failed to sync user with DB:", err);
         setUser(null);
       }
-    } catch (err) {
+    } else {
       setUser(null);
-    } finally {
-      setLoading(false);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
-    checkUserSession();
-  }, []);
-
-  const login = async (email, password) => {
-    try {
-      const res = await axios.post('/api/auth/login', { email, password });
-      if (res.data.success) {
-        setUser(res.data.user);
-        return { success: true, user: res.data.user };
-      }
-      return { success: false, error: 'Invalid credentials' };
-    } catch (err) {
-      return { success: false, error: err.response?.data?.error || 'Login connection error' };
-    }
-  };
-
-  const register = async (payload) => {
-    try {
-      const res = await axios.post('/api/auth/register', payload);
-      if (res.data.success) {
-        return { success: true };
-      }
-      return { success: false, error: 'Registration failed' };
-    } catch (err) {
-      return { success: false, error: err.response?.data?.error || 'Registration failed' };
-    }
-  };
+    syncUserSession();
+  }, [isLoaded, isSignedIn, clerkUser]);
 
   const logout = async () => {
     try {
-      await axios.post('/api/auth/me');
+      await signOut();
       setUser(null);
       window.location.href = '/login';
     } catch (err) {
       console.error('Logout error:', err);
     }
   };
+
+  // Mock login/register to prevent old components from crashing, though they should be deleted
+  const login = async () => { return { success: false, error: 'Use Clerk Sign In' }; };
+  const register = async () => { return { success: false, error: 'Use Clerk Sign Up' }; };
+  const checkUserSession = syncUserSession;
 
   return (
     <AuthContext.Provider value={{ user, loading, login, register, logout, checkUserSession }}>
