@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getAuth, clerkClient } from '@clerk/nextjs/server';
+import { getAuth } from '@clerk/nextjs/server';
 import fs from 'fs';
 import path from 'path';
 
@@ -9,6 +9,11 @@ export async function POST(request) {
     if (!userId) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
+    
+    // Parse the frontend payload for user details
+    const body = await request.json().catch(() => ({}));
+    const email = body.email || 'unknown@example.com';
+    const name = body.name || 'New User';
 
     // Read demoRole from cookie if it exists
     const demoRoleCookie = request.cookies.get('demoRole');
@@ -41,15 +46,6 @@ export async function POST(request) {
       }
       return NextResponse.json({ success: true, user: existingUser });
     }
-
-    // New user! Get the latest user data from Clerk
-    const client = clerkClient();
-    const clerkUser = await client.users.getUser(userId);
-    
-    const email = clerkUser.emailAddresses[0]?.emailAddress || '';
-    const name = clerkUser.firstName 
-      ? `${clerkUser.firstName} ${clerkUser.lastName || ''}`.trim()
-      : email.split('@')[0];
 
     // Create in our DB
     const newUser = {
