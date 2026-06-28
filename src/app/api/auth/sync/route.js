@@ -28,15 +28,6 @@ export async function POST(request) {
 
     const existingUser = users.find(u => u.clerkId === userId);
     
-    // Always get the latest user data from Clerk
-    const client = clerkClient();
-    const clerkUser = await client.users.getUser(userId);
-    
-    const email = clerkUser.emailAddresses[0]?.emailAddress || '';
-    const name = clerkUser.firstName 
-      ? `${clerkUser.firstName} ${clerkUser.lastName || ''}`.trim()
-      : email.split('@')[0];
-
     if (existingUser) {
       // If demoRole changed, update it so they can easily test different dashboards
       let changed = false;
@@ -51,7 +42,16 @@ export async function POST(request) {
       return NextResponse.json({ success: true, user: existingUser });
     }
 
-    // New user! Create in our DB
+    // New user! Get the latest user data from Clerk
+    const client = clerkClient();
+    const clerkUser = await client.users.getUser(userId);
+    
+    const email = clerkUser.emailAddresses[0]?.emailAddress || '';
+    const name = clerkUser.firstName 
+      ? `${clerkUser.firstName} ${clerkUser.lastName || ''}`.trim()
+      : email.split('@')[0];
+
+    // Create in our DB
     const newUser = {
       _id: userId,
       clerkId: userId,
