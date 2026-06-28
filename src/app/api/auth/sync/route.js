@@ -1,60 +1,79 @@
 import { NextResponse } from 'next/server';
+import { getAuth, clerkClient } from '@clerk/nextjs/server';
 import fs from 'fs';
 import path from 'path';
 
 export async function POST(request) {
   try {
-    const { clerkId, email, name } = await request.json();
+    const { userId } = getAuth(request);
+    if (!userId) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
 
-    if (!clerkId || !email) {
-      return NextResponse.json({ success: false, error: 'Missing clerkId or email' }, { status: 400 });
+    // Read demoRole from cookie if it exists
+    const demoRoleCookie = request.cookies.get('demoRole');
+    let role = demoRoleCookie ? demoRoleCookie.value : 'patient';
+    
+    // Ensure it's a valid role
+    const validRoles = ['patient', 'doctor', 'receptionist', 'billing', 'lab', 'pharmacy'];
+    if (!validRoles.includes(role)) {
+      role = 'patient';
     }
 
     const usersPath = path.join(process.cwd(), 'data', 'db', 'users.json');
     let users = [];
     if (fs.existsSync(usersPath)) {
-      const fileData = fs.readFileSync(usersPath, 'utf8');
-      if (fileData) {
-        users = JSON.parse(fileData);
-      }
+      users = JSON.parse(fs.readFileSync(usersPath, 'utf8'));
     }
 
-    // 1. Check if user already exists by clerkId
-    let existingUser = users.find(u => u.clerkId === clerkId);
-
-    // 2. Fallback: check by email (if they registered previously but didn't have a clerkId)
-    if (!existingUser) {
-      existingUser = users.find(u => u.email === email);
-      if (existingUser) {
-        // Link their account to Clerk
-        existingUser.clerkId = clerkId;
-        fs.writeFileSync(usersPath, JSON.stringify(users, null, 2));
-      }
-    }
+    const existingUser = users.find(u => u.clerkId === userId);
+    
+    // Always get the latest user data from Clerk
+    const client = clerkClient();
+    const clerkUser = await client.users.getUser(userId);
+    
+    const email = clerkUser.emailAddresses[0]?.emailAddress || '';
+    const name = clerkUser.firstName 
+      ? `${clerkUser.firstName} ${clerkUser.lastName || ''}`.trim()
+      : email.split('@')[0];
 
     if (existingUser) {
-      // Don't send passwords back, even if they exist
-      const { password, ...safeUser } = existingUser;
-      return NextResponse.json({ success: true, user: safeUser });
+      // If demoRole changed, update it so they can easily test different dashboards
+      let changed = false;
+      if (existingUser.role !== role) {
+        existingUser.role = role;
+        changed = true;
+      }
+      
+      if (changed) {
+        fs.writeFileSync(usersPath, JSON.stringify(users, null, 2));
+      }
+      return NextResponse.json({ success: true, user: existingUser });
     }
 
-    // 3. User is entirely new. Create them as a Patient by default.
+    // New user! Create in our DB
     const newUser = {
-      _id: `patient_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-      clerkId,
+      _id: userId,
+      clerkId: userId,
       name,
       email,
-      role: 'patient',
-      createdAt: new Date().toISOString(),
+      role,
+      createdAt: new Date().toISOString()
     };
+    
+    // Add dummy fields if doctor
+    if (role === 'doctor') {
+      newUser.hospital = "SmartCare Neuro Center";
+      newUser.department = "Cardiology";
+      newUser.cabin = "203";
+    }
 
     users.push(newUser);
     fs.writeFileSync(usersPath, JSON.stringify(users, null, 2));
 
     return NextResponse.json({ success: true, user: newUser });
-
-  } catch (error) {
-    console.error('Error syncing user:', error);
-    return NextResponse.json({ success: false, error: 'Internal server error' }, { status: 500 });
+  } catch (err) {
+    console.error('Error syncing user:', err);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
